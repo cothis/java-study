@@ -25,7 +25,7 @@ public class Work01 {
 		int money = 10000;
 		*/
 
-		int backMoney = money - cost;
+		int changeMoney = money - cost;
 
 		int money5000;
 		int money1000;
@@ -36,11 +36,12 @@ public class Work01 {
 
 		int nextMoney;
 
-		money5000 = backMoney / 5000;
-		nextMoney = backMoney % 5000;
+		money5000 = changeMoney / 5000;
+		nextMoney = changeMoney % 5000;
 
 		money1000 = nextMoney / 1000;
 		nextMoney = nextMoney % 1000;
+		// money1000 = (changeMoney % 5000) / 1000 이런식으로도 가능
 
 		money500 = nextMoney / 500;
 		nextMoney = nextMoney % 500;
@@ -53,7 +54,7 @@ public class Work01 {
 
 		money10 = nextMoney / 10;
 
-		System.out.println("잔금은 " + backMoney + "원 입니다.");
+		System.out.println("잔금은 " + changeMoney + "원 입니다.");
 		System.out.println("5000원권 " + money5000 + "장, 1000원권 " + money1000 + "장, " + 
 		"500원 " + money500 + "개, 100원 " + money100 + "개, 50원 " + money50 + "개, 10원 " + money10 + "개");
 
