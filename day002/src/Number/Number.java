@@ -2,43 +2,43 @@ package Number;
 
 public class Number {
 	public static void main(String[] args) {
-		int num1;	// local(吏��뿭) variable, auto
-		
+		int num1;	// local(지역) variable, auto
+
 		{
-			int num2;	// local(吏��뿭) variable
+			int num2;	// local(지역) variable
 			num1 = 23;	// memory : stack, heap, static, sys
-						// 濡쒖뺄 蹂��닔�뒗 stack�뿉 ���옣�맂�떎.(�꽑�뼵 �떆)
+						// 로컬 변수는 stack에 저장된다.(선언 시)
 		}
-		
+
 		num1 = 24;
-		// num2 = 23;	// 蹂��닔 scope 踰쀬뼱�궓
-		
-		// 蹂��닔
-		// �닽�옄�삎
+		// num2 = 23;	// 변수 scope 벗어남
+
+		// 변수
+		// 숫자형
 		byte b;					// 1 byte
 		short s;				// 2 byte
 		int i;					// 4 byte
 		long l = 12L;			// 8 byte
-		
+
 		float f = 123.456F;		// 4 byte
 		double d;				// 8 byte
-		
+
 		/*
 		 * app(window) == web(browser)
 		 * 
-		 * 愿�由� �봽濡쒓렇�옩
+		 * 관리 프로그램
 		 * oracle <- java -> web(html, javascript, css)
 		 *                   JSP -> Vue, React
 		 * 
 		 */
-		
-		// 臾몄옄�삎
+
+		// 문자형
 		char c = '한';			// 2 byte
 		String str = "Hello";	// Wrapper Class
-		String str1 = new String("Hello");	// �쐞�� �룞�씪, �떎留� 媛앹껜 二쇱냼媛믪� �떎由�. 由ы꽣�윺�� 怨듯넻 pool�뿉 ���옣�릺�굹, new String�� Heap�뿉 ���옣�맖
+		String str1 = new String("Hello");	// 위와 동일, 다만 객체 주소값은 다름. 리터럴은 공통 pool에 저장되나, new String은 Heap에 저장됨
 		str = str + " world";	// == str.concat(" world")
-		
-		// �끉由ы삎
+
+		// 논리형
 		boolean b1 = true;	// 1
 		b1 = false;			// 0
 	}
