@@ -57,7 +57,7 @@ public class Work14 {
 		for(int i = 100; i > 0; i = i-10) {
 			if ( userNumber >= i) {
 				System.out.println("입력하신 숫자는 " + (i) + "보다 크거나 같고 " + (i + 10) + "보다 작습니다.");
-//				break;
+				break;
 			}
 		}
 		
