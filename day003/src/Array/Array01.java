@@ -92,5 +92,20 @@ public class Array01 {
 		
 		int array3[] = null;	// null -> (0x00000000)
 		System.out.println(array3);
+		
+		char charArr1[] = new char[5];
+		charArr1[0] = 'h';
+		charArr1[1] = 'e';
+		charArr1[2] = 'l';
+		charArr1[3] = 'l';
+		charArr1[4] = 'o';
+		
+		System.out.println(charArr1.length);
+		
+		System.out.println(charArr1);
+		
+		System.out.println(charArr1[0]);
+		System.out.println((int)charArr1[0]); // ASCII code
+		
 	}
 }
