@@ -12,20 +12,6 @@ public class If01 {
 		 *   } else {
 		 *     내용
 		 *   }
-		 * 
-		 * - 조건문 switch
-		 *   switch (변수명) {
-		 *   case A:
-		 *     내용
-		 *     break;
-		 *   case B:
-		 *     내용
-		 *     break;
-		 *     :
-		 *   default:
-		 *     내용
-		 *     break;
-		 *   }
 		 *   
 		 */
 		
