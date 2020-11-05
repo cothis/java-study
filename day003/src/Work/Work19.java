@@ -19,5 +19,13 @@ public class Work19 {
 			}
 			System.out.println();
 		}
+		
+		int array[] = {2, 5, 3, 1, 6, 5};
+		for(int i = 0; i < array.length; i++) {
+			for(int j = 0; j < array[i] ; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
 	}
 }
