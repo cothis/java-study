@@ -1,6 +1,6 @@
-package Practice;
+package Sort;
 
-import Practice.*;
+import Sort.*;
 
 public class test {
 	public static void printArray(int[] array) {

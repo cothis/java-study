@@ -1,6 +1,6 @@
-package Practice;
+package Sort;
 
-import Practice.test;
+import Sort.test;
 
 public class SelectionSort {
 	public static int sort(int[] array) {

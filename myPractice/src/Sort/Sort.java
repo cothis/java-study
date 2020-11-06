@@ -1,4 +1,4 @@
-package Practice;
+package Sort;
 
 // 삽입정렬 해보기
 public class Sort {
