@@ -18,9 +18,10 @@ package Work;
 import java.util.Scanner;
 
 public class Work02BaseBall {
-	public static final boolean devMode = true;
+	public static final boolean DEV = true;
 	public static final int MAX_CHANCE = 10;
-	public static final int NUMBER_OF_ANSWER = 3;
+	public static final int NUMBER_OF_ANSWER = 5;
+	public static final int MAX_NUMBER = 10;
 	
  	public static void printArray(int[] array) {
 		for (int i = 0 ; i < array.length; i++) {
@@ -56,15 +57,24 @@ public class Work02BaseBall {
 		// 랜덤 숫자 3개 생성(array) 1 ~ 10 사이의 숫자
 		// 이때 같은 숫자 안나오도록 확인
 		loopCount = 0;
-		while(loopCount < NUMBER_OF_ANSWER) {
-			int num = (int) (Math.random() * 10) + 1;
-			// 배열에 이미 존재하는 값인지 확인
-			if(isExist(randNumbers, num)) {
-				// 이미 존재하면 continue 하고 다시 생성
-				continue;
+//		while(loopCount < NUMBER_OF_ANSWER) {
+//			int num = (int) (Math.random() * 10) + 1;
+//			// 배열에 이미 존재하는 값인지 확인
+//			if(isExist(randNumbers, num)) {
+//				// 이미 존재하면 continue 하고 다시 생성
+//				continue;
+//			}
+//			randNumbers[loopCount] = num;
+//			loopCount++;
+//		}
+		boolean[] match = new boolean[MAX_NUMBER];
+		while (loopCount < NUMBER_OF_ANSWER) {
+			int num = (int) (Math.random() * MAX_NUMBER);
+			if (match[num] == false) {
+				match[num] = true;
+				randNumbers[loopCount] = num + 1;
+				loopCount++;
 			}
-			randNumbers[loopCount] = num;
-			loopCount++;
 		}
 		
 		// Loop(10회)
@@ -78,7 +88,7 @@ public class Work02BaseBall {
 			
 			System.out.println();
 			// 랜덤 array 확인
-			if(devMode) {
+			if(DEV) {
 				System.out.print("정답: ");
 				printArray(randNumbers);
 			}
@@ -92,7 +102,7 @@ public class Work02BaseBall {
 				int num = scanner.nextInt();
 				
 				// 1 ~ 10 범위 확인
-				if (num < 1 || num > 10) {
+				if (num < 1 || num > MAX_NUMBER) {
 					System.out.println("잘못 입력하셨습니다.");
 					continue;
 				}
