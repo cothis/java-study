@@ -1,7 +1,5 @@
 package Sort;
 
-import Sort.*;
-
 public class test {
 	public static void printArray(int[] array) {
 		for (int i = 0 ; i < array.length; i++) {
@@ -20,8 +18,10 @@ public class test {
 		int count;
 		System.out.print("처음 Array : ");
 		printArray(array);
+		// Sort s = new SelectionSort();
+		Sort s = new QuickSort();
 		
-		count = SelectionSort.sort(array);
+		count = s.sort(array);
 		
 		System.out.println("swap 횟수 : " + count);
 		System.out.print("Sort 후 Array :");

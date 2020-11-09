@@ -2,8 +2,10 @@ package Sort;
 
 import Sort.test;
 
-public class SelectionSort {
-	public static int sort(int[] array) {
+public class SelectionSort extends Sort {
+	@Override
+	public int sort(int[] array) {
+		System.out.println("selection sort");
 		int count = 0;
 		for(int i = 0; i < array.length - 1; i++) {
 			int index = i;

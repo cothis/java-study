@@ -19,17 +19,46 @@ public class Main {
 		array = new int[scanner.nextInt()];
 		
 		// 숫자 입력 받기(개수만큼)
-		for (int i = 0 ; i < array.length; i++) {
-			System.out.printf("(%d/%d) 숫자를 입력해주세요%n", i + 1, array.length);
-			System.out.print("> ");
-			array[i] = scanner.nextInt();
+		{
+			int i = 0;
+			WHILE:while (i < array.length) {
+				System.out.printf("(%d/%d) 숫자를 입력해주세요%n", i + 1, array.length);
+				System.out.print("> ");
+				String str = scanner.next();
+				for (int j = 0; j < str.length(); j++) {
+					int c = str.charAt(j);
+					if (j == 0 && c == '-') {
+					} else if (c < '0' || c > '9') {
+						System.out.println("잘못 입력하셨습니다.");
+						continue WHILE;
+					}
+				}
+
+				array[i] = Integer.parseInt(str);
+				i++;
+			}
 		}
 		
 		// 올림/내림 선택
 		System.out.println("정렬 방법을 선택해주세요.");
-		System.out.println("1. 오름차순, 2. 내림차순");
-		System.out.print("> ");
-		ascending = (scanner.nextInt() == 1);
+		while(true) {
+			System.out.println("1. 오름차순, 2. 내림차순");
+			System.out.print("> ");
+			String str = scanner.next();
+			if (str.length() > 1) {
+				System.out.println("잘못 입력하셨습니다.");
+				continue;
+			} else {
+				int num = str.charAt(0);
+				if (num != '1' && num != '2') {
+					System.out.println("잘못 입력하셨습니다.");
+					continue;
+				}
+			}
+			
+			ascending = Integer.parseInt(str) == 1;
+			break;
+		}
 		
 		
 		// 정렬
@@ -43,12 +72,27 @@ public class Main {
 				}
 			}
 		}
-		
+
 		// 결과 출력
-		String str = (ascending)? "(오름차순)" : "(내림차순)";
-		System.out.println("정렬된 배열: " + Arrays.toString(array) + str);
-		
+		String str = (ascending) ? "(오름차순)" : "(내림차순)";
+		//System.out.println("정렬된 배열: " + Arrays.toString(array) + str);
+		System.out.print("정렬된 배열: [");
+		{
+			int i = 0 ;
+			for (int n : array) {
+				if(i != 0) {
+					System.out.print(", ");
+				}
+				System.out.print(n);
+				i++;
+			}
+			
+		}
+		System.out.println("]");
+
 		// 프로그램 종료
 		scanner.close();
+ 
 	}
+	
 }
