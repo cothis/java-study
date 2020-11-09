@@ -166,6 +166,9 @@ public class StudentMain {
 							String[] temp = tempArray[i];
 							tempArray[i] = tempArray[j];
 							tempArray[j] = temp;
+							int tempTotal = total[i];
+							total[i] = total[j];
+							total[j] = tempTotal;
 						}
 					}
 				}
@@ -185,7 +188,6 @@ public class StudentMain {
 				System.out.print("> ");
 				String subject = scanner.next();
 				
-				int[] score = new int[insertCount];
 				int index = 0;
 				String subjectName = "";
 				
@@ -217,6 +219,9 @@ public class StudentMain {
 							String[] temp = tempArray[i];
 							tempArray[i] = tempArray[j];
 							tempArray[j] = temp;
+							int scoreTemp = subjectScore[i];
+							subjectScore[i] = subjectScore[j];
+							subjectScore[i] = scoreTemp;
 						}
 					}
 				}
