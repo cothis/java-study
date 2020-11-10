@@ -83,52 +83,55 @@ public class StudentMain {
 				while(true) {
 					System.out.print("국어 : ");
 					kor = scanner.next();
-					boolean check = false;
+					boolean error = false;
 					for(int i = 0 ; i < kor.length() ; i++) {
 						char c = kor.charAt(i);
-						if (c >= '0' && c <= '9') {
-							check = true;
+						if (c < '0' || c > '9') {
+							error = true;
 							break;
 						}
 					}
-					if(check) break;
-					else {
+					if(error) {
 						System.out.println("잘못 입력하셨습니다.");
+						continue;
 					}
+					break;
 				}
 				
 				while(true) {
 					System.out.print("영어 : ");
 					eng = scanner.next();
-					boolean check = false;
+					boolean error = false;
 					for(int i = 0 ; i < eng.length() ; i++) {
 						char c = eng.charAt(i);
-						if (c >= '0' && c <= '9') {
-							check = true;
+						if (c < '0' || c > '9') {
+							error = true;
 							break;
 						}
 					}
-					if(check) break;
-					else {
+					if(error) {
 						System.out.println("잘못 입력하셨습니다.");
+						continue;
 					}
+					break;
 				}
 				
 				while(true) {
 					System.out.print("수학 : ");
 					math = scanner.next();
-					boolean check = false;
+					boolean error = false;
 					for(int i = 0 ; i < math.length() ; i++) {
 						char c = math.charAt(i);
-						if (c >= '0' && c <= '9') {
-							check = true;
+						if (c < '0' || c > '9') {
+							error = true;
 							break;
 						}
 					}
-					if(check) break;
-					else {
+					if(error) {
 						System.out.println("잘못 입력하셨습니다.");
+						continue;
 					}
+					break;
 				}
 				
 				students[insertCount][0] = name;
