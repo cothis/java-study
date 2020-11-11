@@ -14,7 +14,28 @@ public class Function {
 			
 			return 나오는 값
 		}
-	    
 		*/
+
+		// 가변 인수 
+		// 항상 마지막 인수여야 한다.
+		allocParam(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		allocParam(11, 22, 33, 44, 55);
+		
+		allocFunc("world", 2, 4, 6);
+	}
+	public static void allocParam(int... num) { // printf("format", arg1, arg2, arg3...)
+		int sum = 0;
+		
+		for(int i = 0 ; i < num.length ; i++) {
+			sum = sum + num[i];
+		}
+		System.out.println("sum:" + sum);
+	}
+	
+	public static void allocFunc(String str, int... num) {
+		System.out.println("str: " + str);
+		for (int i = 0; i < num.length; i++) {
+			System.out.println("num[i] = " + num[i]);
+		}
 	}
 }
