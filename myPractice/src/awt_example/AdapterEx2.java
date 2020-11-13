@@ -3,6 +3,7 @@ package awt_example;
 import java.awt.*;
 import java.awt.event.*;
 
+@SuppressWarnings("serial")
 class FAdapterEx extends Frame implements ActionListener {
 	Panel p1, p2, p3;
 	TextField tf;
@@ -69,6 +70,7 @@ class FAdapterEx extends Frame implements ActionListener {
 
 public class AdapterEx2 {
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		FAdapterEx.KeyEventHandler key = new FAdapterEx().new KeyEventHandler();
 	}
 }

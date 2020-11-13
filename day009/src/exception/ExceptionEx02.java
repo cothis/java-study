@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class ExceptionEx02 {
+	@SuppressWarnings("null")
 	public static void main(String[] args) {
 		// NullPointerException
 		String str = null;
@@ -24,6 +25,7 @@ public class ExceptionEx02 {
 		
 		// FileNotFoundException
 		File f = new File("c:\\xxx.txt");
+		@SuppressWarnings("unused")
 		FileInputStream is;
 		
 		try {
@@ -45,6 +47,7 @@ public class ExceptionEx02 {
 		// StringIndexOutOfBoundsException
 		try {
 			String str1 = "abc";
+			@SuppressWarnings("unused")
 			char c = str1.charAt(3);
 		} catch (StringIndexOutOfBoundsException e) {
 			e.printStackTrace();

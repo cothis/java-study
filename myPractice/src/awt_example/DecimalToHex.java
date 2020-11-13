@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+@SuppressWarnings("serial")
 public class DecimalToHex extends Frame implements ActionListener, WindowListener{
 	Panel numpadPanel;
 	Label result;

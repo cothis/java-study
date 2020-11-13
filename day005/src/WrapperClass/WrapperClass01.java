@@ -22,11 +22,14 @@ public class WrapperClass01 {
 		 */
 		
 		// 숫자 -> 문자열
+		@SuppressWarnings("unused")
 		String str = 123 + "";
 		
 		// 문자열 -> 숫자
+		@SuppressWarnings("unused")
 		int number = Integer.parseInt("123") + 1;
 		
+		@SuppressWarnings("unused")
 		double dnumber = Double.parseDouble("123.4567");
 		
 		// toString(), valueOf()

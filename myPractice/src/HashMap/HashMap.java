@@ -6,11 +6,13 @@ import HashMap.Entry;
 public class HashMap<T, S> {
 	private Entry<T, S>[] entry;
 	private int count;
+	@SuppressWarnings("unchecked")
 	public HashMap() {
 		entry = new Entry[10];
 		count = 0;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public HashMap(int capacity) {
 		entry = new Entry[capacity];
 		count = 0;
@@ -32,6 +34,7 @@ public class HashMap<T, S> {
 		
 		// check capacity
 		if ( count >= entry.length) {
+			@SuppressWarnings("unchecked")
 			Entry<T, S>[] temp = new Entry[entry.length * 2];
 			for (int i = 0 ; i < entry.length ; i++) {
 				temp[i] = entry[i];
@@ -44,6 +47,7 @@ public class HashMap<T, S> {
 	}
 	
 	public Entry<T, S>[] entrySet(){
+		@SuppressWarnings("unchecked")
 		Entry<T, S>[] temp = new Entry[count];
 		for (int i = 0; i < count; i++) {
 			temp[i] = entry[i];
@@ -58,6 +62,7 @@ public class HashMap<T, S> {
 		System.out.println();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public T get(T key) {
 		T value = null;
 		for (int i = 0; i < count; i++) {

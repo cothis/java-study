@@ -110,8 +110,11 @@ public class String01 {
 		int num = 123;
 		long lo = 1234L;
 		double d = 123.4567;
+		@SuppressWarnings("unused")
 		String s1 = String.valueOf(num); // num + ""; 이 더 간단
+		@SuppressWarnings("unused")
 		String s2 = String.valueOf(lo);
+		@SuppressWarnings("unused")
 		String s3 = String.valueOf(d);
 		System.out.printf("%d %d %f\n", num, lo, d);
 		

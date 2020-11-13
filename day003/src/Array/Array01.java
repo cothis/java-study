@@ -62,6 +62,7 @@ public class Array01 {
 		array[1] = 22;
 		array[2] = 33;
 
+		@SuppressWarnings("unused")
 		int array1[] = { 111, 222, 333 };
 		
 		/* 안되는 경우

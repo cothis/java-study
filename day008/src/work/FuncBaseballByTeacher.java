@@ -84,6 +84,7 @@ public class FuncBaseballByTeacher {
 	}
 	
 	static void userInput(int u_num[]) {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 
 		while(true) {

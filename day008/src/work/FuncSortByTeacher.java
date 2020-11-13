@@ -69,6 +69,7 @@ public class FuncSortByTeacher {
 	}
 	
 	static int[] inputNumber(boolean[] upAddress) {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("숫자의 갯수 : ");

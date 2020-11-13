@@ -16,6 +16,7 @@ public class StudentWithTeacher {
 //		};
 		int sum;
 		double avg;
+		@SuppressWarnings("unused")
 		int max, min;
 		
 		// 초기화

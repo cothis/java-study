@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+@SuppressWarnings("serial")
 public class ActionEventEx extends Frame implements ActionListener, WindowListener{
 	Panel p;
 	Button input, exit;

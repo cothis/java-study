@@ -2,7 +2,6 @@ package file;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class FileEx01 {
 	public static void main(String[] args) {
@@ -56,8 +55,37 @@ public class FileEx01 {
 			e.printStackTrace();
 		}
 		
+		// 파일 존재 여부
+		if(newFile.exists()) {
+			System.out.println("파일이 존재합니다.");
+		} else {
+			System.out.println("파일이 존재하지 않습니다.");
+		}
 		
+		/*// 파일 삭제
+		if(newFile.delete()) {
+			System.out.println("파일이 삭제되었습니다.");
+		} else {
+			System.out.println("파일을 삭제하지 못했습니다.");
+		}
+		*/
 		
+		// 파일 읽기 가능
+		if(newFile.canRead()) {
+			System.out.println("파일 읽기 가능합니다.");
+		} else {
+			System.out.println("파일 읽기가 불가능합니다.");
+		}
+		
+		// 읽기 전용
+		//newFile.setReadOnly();
+		
+		// 파일 쓰기 가능
+		if(newFile.canWrite()) {
+			System.out.println("파일 쓰기 가능합니다.");
+		} else {
+			System.out.println("파일 쓰기가 불가능합니다.");
+		}
 	
 	}
 }

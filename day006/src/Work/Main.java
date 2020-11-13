@@ -74,6 +74,7 @@ public class Main {
 		}
 
 		// 결과 출력
+		@SuppressWarnings("unused")
 		String str = (ascending) ? "(오름차순)" : "(내림차순)";
 		//System.out.println("정렬된 배열: " + Arrays.toString(array) + str);
 		System.out.print("정렬된 배열: [");

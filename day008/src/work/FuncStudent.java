@@ -177,6 +177,7 @@ public class FuncStudent {
 	}
 	
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		FuncStudent fc = new FuncStudent();
 	}
 }

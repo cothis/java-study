@@ -48,6 +48,7 @@ public class FuncStudentByTeacher {
 	 * 내용 : 학생수를 입력받는다.
 	 */
 	static int studentCountInput() {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("학생 수 입력 : ");
@@ -62,6 +63,7 @@ public class FuncStudentByTeacher {
 			return null;
 		}
 		
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		
 		String[][] student = new String[count][4];
@@ -94,6 +96,7 @@ public class FuncStudentByTeacher {
 		// 사실 이 메소드는 continue가 잘못되어 있음.
 		// while 간단하게 추가하면 해결됨
 		// ==> 해결함
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		
 		String title[] = {"국어", "영어", "수학"};
@@ -150,6 +153,7 @@ public class FuncStudentByTeacher {
 	}
 	
 	static void studentTitleOne(String[][] student) {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("과목 입력(국어1, 영어2, 수학3) : ");

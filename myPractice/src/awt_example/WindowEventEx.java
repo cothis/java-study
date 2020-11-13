@@ -6,6 +6,7 @@ import java.awt.Label;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+@SuppressWarnings("serial")
 public class WindowEventEx extends Frame implements WindowListener{
 	public WindowEventEx() {
 		super("windowEvent 테스트");

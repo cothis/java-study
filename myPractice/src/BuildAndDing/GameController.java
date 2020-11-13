@@ -2,7 +2,6 @@ package BuildAndDing;
 
 import java.util.Arrays;
 
-import BuildAndDing.*;
 
 public class GameController {
 	private User user;

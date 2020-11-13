@@ -1,6 +1,5 @@
 package work;
 
-import java.awt.print.Printable;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -34,6 +33,7 @@ public class FuncBaseball {
 	}
 	
 	static void inputUserNumArr(int[] uNumArray) {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		int w = 0;
 		boolean[] checkArray = new boolean[9];

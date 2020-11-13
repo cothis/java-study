@@ -1,6 +1,5 @@
 package HashMap;
 
-import HashMap.Entry;
 import HashMap.HashMap;
 
 public class Test {
