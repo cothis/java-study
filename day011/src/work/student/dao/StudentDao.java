@@ -175,7 +175,7 @@ public class StudentDao {
 	public void insert() { // Create
 		// 학생 정보 추가
 		if(count < studentArray.length) {
-			int number = count + 1;
+			int number;
 			String name;
 			int kor;
 			int eng;
