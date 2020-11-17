@@ -9,7 +9,7 @@ public class View {
 		Scanner sc = new Scanner(System.in);
 
 		//메뉴(view)
-		
+		//DAO == Data Access Object
 		StudentDao stDao = new StudentDao(10);
 		
 		while(true) {
@@ -17,7 +17,8 @@ public class View {
 			System.out.println("2. 학생정보 삭제");
 			System.out.println("3. 학생정보 검색");
 			System.out.println("4. 학생정보 수정");
-			System.out.println("5. 종료");
+			System.out.println("5. 학생 리스트 출력");
+			System.out.println("6. 종료");
 			System.out.println("어느 작업을 하시겠습니까?");
 			System.out.print("> ");
 			int select = 0;
@@ -46,12 +47,18 @@ public class View {
 					stDao.update();
 					break;					
 				}
+				case 5: { // 학생 리스트 출력
+					stDao.list();
+					break;
+				}
 				default: {
 					break;
 				}
 			}
 			
-			if(select == 5) {
+			if(select == 6) {
+				sc.close();
+				stDao.close();
 				break;
 			}
 		} // while

@@ -70,6 +70,10 @@ public class StudentDao {
 	}
 	
 	private int inputNumber(String message) {
+		return inputNumber(message, false);
+	}
+	
+	private int inputNumber(String message, boolean checkRange) {
 		int score;
 		while(true) {
 			System.out.print(message);
@@ -195,11 +199,11 @@ public class StudentDao {
 			// 학생 이름 입력
 			name = inputString("이름: ");
 			// 국어 점수 입력
-			kor = inputNumber("국어: ");
+			kor = inputNumber("국어: ", true);
 			// 영어 점수 입력
-			eng = inputNumber("영어: ");
+			eng = inputNumber("영어: ", true);
 			// 수학 점수 입력
-			math = inputNumber("수학: ");
+			math = inputNumber("수학: ", true);
 			
 			Student st = new Student(number, name, kor, eng, math);
 			studentArray[count] = st;
@@ -254,5 +258,77 @@ public class StudentDao {
 		selectedStudent.setEng(eng);
 		selectedStudent.setMath(math);
 		System.out.println("학생 정보가 변경되었습니다.");
+	}
+	
+	private void swap(Student[] arr, int i, int j) {
+		Student temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+
+	public Student[] sort() {
+		// by 1:number, 2:name, 3:kor, 4:eng, 5:math
+		Student[] sorted;
+		sorted = Arrays.copyOf(studentArray, count);
+		
+		System.out.println("정렬 기준(1:number, 2:name, 3:kor, 4:eng, 5:math)");
+		int by = inputNumber("> ");
+		
+		for(int i = 0 ; i < sorted.length - 1; i++) {
+			for(int j = i; j < sorted.length; j++) {
+				switch(by) {
+					case 1:
+					{
+						if (sorted[i].getNumber() > sorted[j].getNumber()) {
+							swap(sorted, i, j);
+						}
+						break;
+					}
+					case 2:
+					{
+						if (sorted[i].getName().hashCode() > sorted[j].getName().hashCode()) {
+							swap(sorted, i, j);
+						}
+						break;
+					}
+					case 3:
+					{
+						if (sorted[i].getKor() > sorted[j].getKor()) {
+							swap(sorted, i, j);
+						}
+						break;
+					}
+					case 4:
+					{
+						if (sorted[i].getEng() > sorted[j].getEng()) {
+							swap(sorted, i, j);
+						}
+						break;
+					}
+					case 5:
+					{
+						if (sorted[i].getMath() > sorted[j].getMath()) {
+							swap(sorted, i, j);
+						}
+						break;
+					}
+				} // switch
+			}
+		}
+		
+		
+		return sorted;
+	}
+	
+	public void list() {
+		if (isEmpty()) return;
+		Student[] sortedList = sort();
+		for (Student student : sortedList) {
+			System.out.println(student);
+		}
+	}
+	
+	public void close() {
+		sc.close();
 	}
 }

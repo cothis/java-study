@@ -12,6 +12,7 @@ public class test {
 				break;
 			}
 		}
+		sc.close();
 	}
 }
 
