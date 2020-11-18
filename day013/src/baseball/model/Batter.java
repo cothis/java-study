@@ -4,12 +4,18 @@ public class Batter extends Human{
 	private int hitCount;
 	private int hits;
 	private double battingAve;
-	public Batter(int hitCount, int hits, double battingAve) {
-		super();
+	
+	public Batter() {
+		
+	}
+	
+	public Batter(int number, String name, int age, double height, int hitCount, int hits, double battingAve) {
+		super(number, name, age, height);
 		this.hitCount = hitCount;
 		this.hits = hits;
 		this.battingAve = battingAve;
 	}
+	
 	public int getHitCount() {
 		return hitCount;
 	}

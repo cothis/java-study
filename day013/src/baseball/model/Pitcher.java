@@ -5,6 +5,10 @@ public class Pitcher extends Human{
 	private int lose;
 	private double defence;
 	
+	public Pitcher() {
+		
+	}
+	
 	public Pitcher(int number, String name, int age, double height, int win, int lose, double defence) {
 		super(number, name, age, height);
 		this.win = win;
@@ -37,7 +41,7 @@ public class Pitcher extends Human{
 	}
 	@Override
 	public String toString() {
-		return super.toString() + ", win: " + win + ", lose: " + lose + ", era: " + defence;
+		return super.toString() + ", win: " + win + ", lose: " + lose + ", defence: " + defence;
 	}
 	
 }
