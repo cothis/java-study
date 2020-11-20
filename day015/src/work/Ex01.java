@@ -4,12 +4,19 @@ public class Ex01 {
 	public static void main(String[] args) {
 		Shape s = new Circle(10);
 		System.out.println(s.calcArea());
-		System.out.println(s.isSquare());
 		
 		System.out.println();
 		s = new Rectangle(5, 5);
 		System.out.println(s.calcArea());
-		System.out.println(s.isSquare());
+		System.out.println(((Rectangle)s).isSquare());
+		
+		s = new Shape(new Point(5, 5)) { // Triangle		
+			@Override
+			double calcArea() {
+				return (p.x * p.y / 2.0);
+			}
+		};
+		System.out.println(s.calcArea());
 	}
 }
 
@@ -22,8 +29,6 @@ class Circle extends Shape{
 	@Override
 	double calcArea() { return Math.PI*r*r; }
 	
-	@Override
-	boolean isSquare() { return false; }
 }
 
 class Rectangle extends Shape{
@@ -40,8 +45,7 @@ class Rectangle extends Shape{
 	@Override
 	double calcArea() { return width*height; }
 
-	@Override
-	boolean isSquare() { return true; }	
+	boolean isSquare() { return width == height; }	
 }
 
 abstract class Shape {
@@ -55,7 +59,6 @@ abstract class Shape {
 	}
 	
 	abstract double calcArea(); // 도형의 면적을 계산해서 반환하는 메소드
-	abstract boolean isSquare(); // 정사각형 여부
 	
 	Point getPosition() {
 		return p;

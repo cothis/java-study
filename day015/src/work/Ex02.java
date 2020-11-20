@@ -14,7 +14,6 @@ public class Ex02 {
 
 class Point3D {
 	int x, y, z;
-
 	public Point3D(int x, int y, int z) {
 		super();
 		this.x = x;
