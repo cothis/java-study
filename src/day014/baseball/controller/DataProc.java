@@ -1,4 +1,4 @@
-package baseball.controller;
+package day014.baseball.controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import baseball.main.Main;
+import day014.baseball.main.Main;
 
 public class DataProc {
 	File f;

@@ -1,11 +1,11 @@
-package baseball.main;
+package day014.baseball.main;
 
 import java.util.Scanner;
 
-import baseball.controller.Controller;
-import baseball.model.Batter;
-import baseball.model.Human;
-import baseball.model.Pitcher;
+import day014.baseball.controller.Controller;
+import day014.baseball.model.Batter;
+import day014.baseball.model.Human;
+import day014.baseball.model.Pitcher;
 
 public class Main {
 	Controller controller = new Controller();

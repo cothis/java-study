@@ -1,4 +1,4 @@
-package baseball.model;
+package day014.baseball.model;
 
 public class Batter extends Human{
 	private int hitCount;

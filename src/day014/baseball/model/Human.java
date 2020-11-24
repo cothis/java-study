@@ -1,4 +1,4 @@
-package baseball.model;
+package day014.baseball.model;
 
 public class Human {
 	private int number;

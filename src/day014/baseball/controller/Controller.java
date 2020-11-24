@@ -1,11 +1,11 @@
-package baseball.controller;
+package day014.baseball.controller;
 
 import java.util.Arrays;
 
-import baseball.main.Main;
-import baseball.model.Batter;
-import baseball.model.Human;
-import baseball.model.Pitcher;
+import day014.baseball.main.Main;
+import day014.baseball.model.Batter;
+import day014.baseball.model.Human;
+import day014.baseball.model.Pitcher;
 
 public class Controller {
 	private Human[] humanArr = new Human[20];
