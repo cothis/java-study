@@ -68,13 +68,14 @@ public class FileController {
     public Player createPlayer(String line) {
         Player player = null;
         String[] elements = line.split(",");
+
         for(int i = 0; i < elements.length; i++ ) {
             elements[i] = elements[i]
                     .substring(elements[i].indexOf("=") + 1)
                     .trim();
         }
         int number = Integer.parseInt(elements[0]);
-        String name = elements[1];
+        String name = elements[1].substring(1, elements[1].length()-1);
         int age = Integer.parseInt(elements[2]);
         double height = Double.parseDouble(elements[3]);
 
