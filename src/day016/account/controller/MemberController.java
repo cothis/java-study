@@ -9,8 +9,8 @@ import java.util.List;
 
 @Component
 public class MemberController {
-    private Service service;
-    private View view;
+    private final Service service;
+    private final View view;
 
     public MemberController(Service service, View view) {
         this.service = service;

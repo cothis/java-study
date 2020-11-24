@@ -16,17 +16,17 @@ public class Container {
     private final Service service = new Service(accountRepository);
     private final MemberController memberController = new MemberController(service, view);
 
-    /* 이부분은 DI 테스트 중
+    /* Dependency Injection in Testing...
     public Container() {
         Class controllerClass = Controller.class;
         Annotation annotation = controllerClass.getAnnotation(Component.class);
 
         if(annotation instanceof Component) {
-            controllerClass.getConstructors();
-
+            System.out.println(controllerClass.getConstructors());
         }
     }
-    */
+     */
+
 
     public void start() {
         while(true) {

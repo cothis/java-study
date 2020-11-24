@@ -6,7 +6,7 @@ import day016.account.repository.AccountRepository;
 import java.util.List;
 
 public class Service {
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
 
     public Service(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
