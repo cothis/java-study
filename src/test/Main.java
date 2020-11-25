@@ -1,12 +1,24 @@
 package test;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Main {
+
+    public static void main(String[] args) {
+
+
+        /*
+        Main main = new Main();
+
+        new StringSearch();
+
+        new CutRod();
+
+        new LongestCommonSubstring();
+        /**/
+
+    }
 
     static class StringSearch {
         public StringSearch() {
@@ -88,26 +100,5 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
 
-        List<Integer> list1 = new ArrayList<>();
-        for(int i = 0; i <= 30; i++) {
-            list1.add(i);
-        }
-
-        List<Integer> list2 = list1.stream().filter(el -> el > 15).collect(Collectors.toList());
-        System.out.println(list1);
-        System.out.println(list2);
-
-        /*
-        Main main = new Main();
-
-        new StringSearch();
-
-        new CutRod();
-
-        new LongestCommonSubstring();
-        /**/
-
-    }
 }
