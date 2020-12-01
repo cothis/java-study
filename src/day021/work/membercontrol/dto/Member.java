@@ -46,6 +46,10 @@ public class Member {
 
     @Override
     public String toString() {
-        return this.name;
+        return name;
+    }
+
+    public String saveData() {
+        return String.format("%d-%s-%d-%.3f", id, name, age, height);
     }
 }

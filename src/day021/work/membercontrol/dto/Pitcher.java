@@ -36,4 +36,9 @@ public class Pitcher extends Member {
     public void setDefence(double defence) {
         this.defence = defence;
     }
+
+    @Override
+    public String saveData() {
+        return "Pitcher:" + super.saveData() + String.format("-%d-%d-%.3f", win, lose, defence);
+    }
 }

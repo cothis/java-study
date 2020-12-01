@@ -9,6 +9,6 @@ public interface MemberRepository {
     void removeMember(Integer memberId);
     Member findById(Integer memberId);
     Member findByName(String name);
-    void updateMember(Integer memberId, Member member);
-    List<Member> findAllMember() ;
+    void updateMember(Member present, Member member);
+    List<Member> findAllMember();
 }

@@ -4,21 +4,23 @@ import day021.work.membercontrol.MemberControl;
 import day021.work.membercontrol.dto.Batter;
 import day021.work.membercontrol.dto.Member;
 import day021.work.membercontrol.dto.Pitcher;
+import day021.work.membercontrol.view.components.LabeledTextField;
+import day021.work.membercontrol.view.main.MainView;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class InsertForm extends JFrame {
+public class InsertDialog extends JDialog {
 
     JRadioButton pitcher, batter;
     JButton ok, cancel;
 
     JPanel inputForm;
+    JFrame parent;
 
     LabeledTextField name;
     LabeledTextField age;
@@ -26,11 +28,17 @@ public class InsertForm extends JFrame {
     LabeledTextField var1;
     LabeledTextField var2;
     LabeledTextField var3;
+    boolean updateMode = false;
+    Member present = null;
 
-
-    public InsertForm() throws HeadlessException {
+    public InsertDialog(JFrame parent, Member presentMember) throws HeadlessException {
+        super(parent, "Insert Form", true);
+        this.parent = parent;
+        this.present = presentMember;
         setTitle("Insert Form");
         setLayout(null);
+        setResizable(false);
+        updateMode = (presentMember != null);
 
         setSize(300,440);
         setLocationRelativeTo(null);
@@ -41,7 +49,11 @@ public class InsertForm extends JFrame {
         titlePanel.setBackground(Color.ORANGE);
 
         JLabel backgroundLabel = new JLabel();
-        backgroundLabel.setText("INSERT Form");
+        if (updateMode) {
+            backgroundLabel.setText("UPDATE Form");
+        } else {
+            backgroundLabel.setText("INSERT Form");
+        }
         backgroundLabel.setFont(new Font("돋움", Font.BOLD, 25));
         backgroundLabel.setBounds(10, 15, 300, 30);
         titlePanel.add(backgroundLabel);
@@ -54,20 +66,36 @@ public class InsertForm extends JFrame {
 
         ButtonGroup buttonGroup = new ButtonGroup();
 
-        pitcher = new JRadioButton("투수", true);
+        boolean selectedPitcher = true;
+        if(updateMode) {
+            if(presentMember instanceof Pitcher) {
+                selectedPitcher = true;
+            }
+            else {
+                selectedPitcher = false;
+            }
+        }
+
+        pitcher = new JRadioButton("투수", selectedPitcher);
         pitcher.setBounds(20, 5, 60, 40);
         pitcher.setFont(this.getFont());
         pitcher.addActionListener(this::callChangeLabel);
         buttonGroup.add(pitcher);
         bodyPanel.add(pitcher);
 
-        batter = new JRadioButton("타자", false);
+        batter = new JRadioButton("타자", !selectedPitcher);
         batter.setBounds(80, 5, 60, 40);
         batter.setFont(this.getFont());
         batter.addActionListener(this::callChangeLabel);
         buttonGroup.add(batter);
         bodyPanel.add(batter);
         add(bodyPanel);
+
+        if(updateMode){
+            pitcher.setEnabled(false);
+            batter.setEnabled(false);
+        }
+
 
         inputForm = new JPanel();
         inputForm.setLayout(null);
@@ -86,7 +114,50 @@ public class InsertForm extends JFrame {
         var1 = new LabeledTextField(inputForm, x,120);
         var2 = new LabeledTextField(inputForm, x,150);
         var3 = new LabeledTextField(inputForm, x,180);
-        changeLabel("투수");
+        var3.textField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == 10) {
+                    insertMember(null);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+
+        if (updateMode) {
+            if (presentMember instanceof Pitcher) {
+                changeLabel("투수");
+            } else {
+                changeLabel("타자");
+            } 
+        } else {
+            changeLabel("투수");
+        } 
+
+        if (updateMode) {
+            name.textField.setText(presentMember.getName());
+            age.textField.setText(presentMember.getAge() + "");
+            height.textField.setText(presentMember.getHeight() + "");
+
+            if (presentMember instanceof Pitcher) {
+                Pitcher p = (Pitcher) presentMember;
+                var1.textField.setText(p.getWin() + "");
+                var2.textField.setText(p.getLose() + "");
+                var3.textField.setText(p.getDefence() + "");
+            } else {
+                Batter b = (Batter) presentMember;
+                var1.textField.setText(b.getHitCount() + "");
+                var2.textField.setText(b.getHits() + "");
+                var3.textField.setText(b.getHitRate() + "");
+            }
+        }
 
         bodyPanel.add(inputForm);
 
@@ -137,18 +208,26 @@ public class InsertForm extends JFrame {
             int var2 = Integer.parseInt(this.var2.textField.getText());
             double var3 = Double.parseDouble(this.var3.textField.getText());
 
+            Member member;
+
             if (pitcher.isSelected()) {
-                Member member = new Pitcher(name, age, height, var1, var2, var3);
-                MemberControl.getMemberRepository().addMember(member);
+                member = new Pitcher(name, age, height, var1, var2, var3);
             }
             else {
-                Member member = new Batter(name, age, height, var1, var2, var3);
-                MemberControl.getMemberRepository().addMember(member);
+                member = new Batter(name, age, height, var1, var2, var3);
             }
 
-            JOptionPane.showMessageDialog(null, "선수가 추가되었습니다.");
+            if (updateMode) {
+                MemberControl.getMemberRepository().updateMember(present, member);
+                JOptionPane.showMessageDialog(null, "선수 정보가 변경되었습니다.");
+            } else {
+                MemberControl.getMemberRepository().addMember(member);
+                JOptionPane.showMessageDialog(null, "선수가 추가되었습니다.");
+            }
+
 
         } catch (Exception exception) {
+            exception.printStackTrace();
             JOptionPane.showMessageDialog(null, "잘못 입력하셨습니다.");
         }
     }

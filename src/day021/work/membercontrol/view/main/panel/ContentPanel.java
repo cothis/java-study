@@ -1,4 +1,4 @@
-package day021.work.membercontrol.view;
+package day021.work.membercontrol.view.main.panel;
 
 import javax.swing.*;
 import java.awt.*;

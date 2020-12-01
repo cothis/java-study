@@ -35,4 +35,9 @@ public class Batter extends Member {
     public void setHitRate(double hitRate) {
         this.hitRate = hitRate;
     }
+
+    @Override
+    public String saveData() {
+        return "Batter:" + super.saveData() + String.format("-%d-%d-%.3f", hitCount, hits, hitRate);
+    }
 }

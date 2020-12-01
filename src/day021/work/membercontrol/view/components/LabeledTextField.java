@@ -1,12 +1,12 @@
-package day021.work.membercontrol.view;
+package day021.work.membercontrol.view.components;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class LabeledTextField {
 
-    JTextField textField;
-    JLabel label;
+    public JTextField textField;
+    public JLabel label;
 
     public LabeledTextField(JPanel panel, int x, int y) {
 
