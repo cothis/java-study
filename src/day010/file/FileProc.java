@@ -88,7 +88,7 @@ public class FileProc {
 		File f = createFile("D:/tmp/mytest.txt");
 		
 		// 파일 쓰기/추가 쓰기 - input data
-		String[] writeData = { "hello", "world", "test" };
+		String[] writeData = { "hello", "world", "java"};
 		writeFile(f, writeData, false);
 		
 		// 파일 읽기 - return data
