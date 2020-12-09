@@ -19,3 +19,4 @@ FROM EMP;
 -- 5) EMP 테이블의 사원명과 업무로 연결(SMITH, CLERK)해서 표시하고 컬럼명은 Employee and Job 으로 표시하시오.
 SELECT ENAME || ', ' || EMP.JOB AS "Employee and Job"
 FROM EMP;
+
