@@ -1,20 +1,20 @@
 -- 50) 모든 사원의 이름, 부서번호, 부서이름을 표시하시오.(emp,dept)
 SELECT E.ENAME, D.DEPTNO, D.DNAME
 FROM EMP E
-         LEFT JOIN DEPT D on D.DEPTNO = E.DEPTNO;
+         INNER JOIN DEPT D on D.DEPTNO = E.DEPTNO;
 
 --51) 업무가 MANAGER인 사원의 정보를 이름,업무,부서명,근무지 순으로
 --    출력하시오.(emp,dept)
 SELECT E.ENAME, E.JOB, D.DNAME, D.LOC
 FROM EMP E
-         LEFT JOIN DEPT D on D.DEPTNO = E.DEPTNO
+         INNER JOIN DEPT D on D.DEPTNO = E.DEPTNO
 WHERE JOB = 'MANAGER';
 
 -- 52) 커미션을 받고 급여가 1,600이상인 사원의 사원이름,부서명,근무지를 출력하시오
-SELECT E.ENAME, D.DNAME, D.LOC
+SELECT E.ENAME, D.DNAME, D.LOC, E.SAL, E.COMM
 FROM EMP E
-         LEFT JOIN DEPT D on D.DEPTNO = E.DEPTNO
-WHERE SAL >= 1600;
+         INNER JOIN DEPT D on D.DEPTNO = E.DEPTNO
+WHERE SAL >= 1600 and E.COMM IS NOT NULL AND E.COMM <> 0;
 
 -- 53) 근무지가 CHICAGO인 모든 사원의 이름,업무,부서번호 및 부서이름을 표시하시오.
 SELECT E.ENAME, E.JOB, D.DEPTNO, D.DNAME
@@ -29,10 +29,7 @@ FROM EMP E
          RIGHT JOIN DEPT D on D.DEPTNO = E.DEPTNO
 GROUP BY D.LOC
 HAVING COUNT(*) <= 3
-ORDER BY COUNT(E.EMPNO)
-
-SELECT *
-FROM EMP E RIGHT JOIN DEPT D on D.DEPTNO = E.DEPTNO
+ORDER BY COUNT(E.EMPNO);
 
 -- 55) 사원의 이름 및 사원 번호를 관리자의 이름과 관리자 번호와 함께 표시하고
 -- 각각의 열 레이블은 employee, emp#, manager, mgr#로 지정하시오.
@@ -78,8 +75,6 @@ FROM EMP E,
 WHERE E.DEPTNO = D.DEPTNO
   and E.SAL between S.LOSAL and S.HISAL
   and D.DEPTNO = 10;
-
-
 
 
 -- 58) 부서번호, 사원이름 및 사원과 동일한 부서에서 근무하는

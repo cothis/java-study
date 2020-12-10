@@ -1,0 +1,149 @@
+-- 문제1) EMPLOYEES 테이블에서 Kochhar의 급여보다 많은 사원의 정보를 사원
+-- 번호,이름,담당업무,급여를 출력하라.
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, SALARY
+FROM EMPLOYEES
+WHERE SALARY > (SELECT SALARY
+                FROM EMPLOYEES
+                WHERE LAST_NAME = 'Kochhar');
+
+-- 문제2) EMPLOYEES 테이블에서 급여의 평균보다 적은 사원의 정보를 사원번호,
+-- 이름,담당업무,급여,부서번호를 출력하여라.
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, SALARY, DEPARTMENT_ID
+FROM EMPLOYEES
+WHERE SALARY < (SELECT AVG(SALARY)
+                FROM EMPLOYEES);
+
+-- 문제3) EMPLOYEES 테이블에서 100번 부서의 최소 급여보다 최소 급여가
+-- 많은 다른 모든 부서를 출력하라
+SELECT DEPARTMENT_ID
+FROM (SELECT DEPARTMENT_ID, MIN(SALARY) MINSAL
+      FROM EMPLOYEES
+      GROUP BY DEPARTMENT_ID) E
+WHERE E.MINSAL < (SELECT MIN(SALARY)
+                  FROM EMPLOYEES
+                  WHERE DEPARTMENT_ID = 100);
+
+-- 문제4) 업무별로 최소 급여를 받는 사원의 정보를 사원번호,이름,업무,부서번호
+-- 를 출력하여라. 단 업무별로 정렬하여라.
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, DEPARTMENT_ID, SALARY
+FROM EMPLOYEES
+WHERE (JOB_ID, SALARY) IN (SELECT JOB_ID, MIN(SALARY)
+                           FROM EMPLOYEES
+                           GROUP BY JOB_ID)
+ORDER BY JOB_ID;
+
+-- 문제5) EMPLOYEES 과 DEPARTMENTS 테이블에서 업무가 세일드맨 사원의 정
+-- 보를 이름,업무,부서명,근무지를 출력하라.
+SELECT FIRST_NAME, LAST_NAME, DEPARTMENT_NAME, LOCATION_ID, JOB_ID
+FROM EMPLOYEES E
+         INNER JOIN DEPARTMENTS D on D.DEPARTMENT_ID = E.DEPARTMENT_ID
+WHERE DEPARTMENT_NAME = 'Sales';
+
+-- 문제6) EMPLOYEES 테이블에서 가장 많은 사원을 갖는 MANAGER의
+-- 사원번호를 출력하라.
+SELECT A.MANAGER_ID
+FROM (SELECT MANAGER_ID, COUNT(*) EMP_COUNT
+      FROM EMPLOYEES
+      GROUP BY MANAGER_ID) A
+         INNER JOIN
+     (SELECT MAX(COUNT(*)) MAX_COUNT
+      FROM EMPLOYEES
+      GROUP BY MANAGER_ID) B ON A.EMP_COUNT = B.MAX_COUNT;
+
+SELECT M.MANAGER_ID
+FROM (SELECT MANAGER_ID, COUNT(*) EMP_COUNT
+      FROM EMPLOYEES
+      GROUP BY MANAGER_ID
+      ORDER BY MANAGER_ID DESC NULLS LAST) M
+WHERE ROWNUM = 1;
+
+SELECT M.MANAGER_ID
+FROM (SELECT ROW_NUMBER() over (ORDER BY COUNT(*) DESC nulls last ) row_num, MANAGER_ID
+      FROM EMPLOYEES
+      GROUP BY MANAGER_ID) M
+where row_num = 1;
+
+-- 문제7) EMPLOYEES 테이블에서 가장 많은 사원이 속해있는
+-- 부서번호와 사원수를 출력하라.
+SELECT DEPARTMENT_ID, NUM_COUNT
+FROM (SELECT DEPARTMENT_ID, COUNT(*) NUM_COUNT
+      FROM EMPLOYEES
+      GROUP BY DEPARTMENT_ID) E
+         INNER JOIN
+     (SELECT MAX(COUNT(*)) MAX_COUNT
+      FROM EMPLOYEES
+      GROUP BY DEPARTMENT_ID) M ON E.NUM_COUNT = M.MAX_COUNT
+
+-- 문제8) EMPLOYEES 테이블에서 사원번호가 123인 사원의 직업과 같고
+-- 사원번호가 192인 사원의 급여(SAL)보다 많은 사원의 사원번호, 이름,
+-- 직업, 급여를 출력하라.
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, SALARY
+FROM EMPLOYEES
+WHERE JOB_ID = (SELECT JOB_ID
+                FROM EMPLOYEES
+                WHERE EMPLOYEE_ID = 123)
+  AND SALARY > (SELECT SALARY
+                FROM EMPLOYEES
+                WHERE EMPLOYEE_ID = 192);
+
+-- 문제9) 직업(JOB)별로 최소 급여를 받는 사원의 정보를 사원번호, 이름, 업
+-- 무, 부서명을 출력하라.
+-- -- 조건1 : 직업별로 내림차순 정렬
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, D.DEPARTMENT_NAME, SALARY
+FROM EMPLOYEES INNER JOIN DEPARTMENTS D on EMPLOYEES.DEPARTMENT_ID = D.DEPARTMENT_ID
+WHERE (JOB_ID, SALARY) IN (
+    SELECT JOB_ID, MIN(SALARY)
+    FROM EMPLOYEES
+    GROUP BY JOB_ID)
+ORDER BY JOB_ID DESC;
+
+SELECT e.employee_id,
+       e.last_name,
+       e.job_id,
+       d.department_name
+FROM employees e
+         INNER JOIN departments d
+                    on e.department_id = d.department_id
+where (e.job_id, e.salary)
+          IN (SELECT job_id, MIN(salary)
+              FROM employees
+              GROUP BY job_id)
+ORDER BY e.job_id DESC;
+
+-- 문제10) EMPLOYEES 테이블에서 업무별로 최소 급여를 받는 사원의 정보를 사
+-- 원번호,이름,업무,입사일자,급여,부서번호를 출력하라
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, HIRE_DATE, SALARY, DEPARTMENT_ID
+FROM EMPLOYEES
+WHERE (JOB_ID, SALARY) IN (
+    SELECT JOB_ID, MIN(SALARY)
+    FROM EMPLOYEES
+    GROUP BY JOB_ID);
+
+-- 문제11) EMPLOYEES 테이블에서 50번 부서의 최소 급여를 받는 사원 보다 많
+-- 은 급여를 받는 사원의 정보를 사원번호,이름,업무,입사일자,급여,부서번호를
+-- 출력하라. 단 50번은 제외
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, HIRE_DATE, SALARY, DEPARTMENT_ID
+FROM EMPLOYEES
+WHERE SALARY > (
+    SELECT MIN(SALARY)
+    FROM EMPLOYEES
+    WHERE DEPARTMENT_ID = 50)
+  AND DEPARTMENT_ID <> 50;
+
+-- 문제12) EMPLOYEES 테이블에서 50번 부서의 최고 급여를 받는 사원 보다
+-- 많은 급여를 받는 사원의 정보를 사원번호,이름,업무,입사일자,급여,부서번호를
+-- 출력하라. 단50번은 제외
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, HIRE_DATE, SALARY, DEPARTMENT_ID
+FROM EMPLOYEES
+WHERE SALARY > (
+    SELECT MAX(SALARY)
+    FROM EMPLOYEES
+    WHERE DEPARTMENT_ID = 50)
+  AND DEPARTMENT_ID <> 50;
+
+-- 문제13) 최근 입사한 사원 순으로 작성해서 1 ~ 10번째, 11 ~ 20 사원의 정보
+-- 를 출력하시오
+SELECT T.EMPLOYEE_ID, T.FIRST_NAME, T.LAST_NAME, T.HIRE_DATE
+FROM (SELECT ROW_NUMBER() over (ORDER BY HIRE_DATE DESC) ROW_COUNT, EMPLOYEE_ID, FIRST_NAME, LAST_NAME, HIRE_DATE
+      FROM EMPLOYEES) T
+WHERE T.ROW_COUNT <= 20
