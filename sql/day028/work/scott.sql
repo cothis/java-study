@@ -42,17 +42,19 @@ ORDER BY SAL DESC;
 -- -- 62) 10번부서에서 급여를 가장 적게 받는 사원과 동일한 급여를 받는 사원의 이름을 출력하시오.
 SELECT ENAME
 FROM EMP
-WHERE SAL IN (
-    SELECT SAL
+WHERE SAL = (
+    SELECT MIN(SAL)
     FROM EMP
     WHERE DEPTNO = 10);
 
 -- -- 63) 사원수가 3명이 넘는 부서의 부서명과 사원수를 출력하시오.
 SELECT DNAME, ECOUNT
 FROM DEPT
-         INNER JOIN (SELECT DEPTNO, COUNT(*) ECOUNT FROM EMP GROUP BY DEPTNO) E
-                    ON DEPT.DEPTNO = E.DEPTNO
-WHERE ECOUNT > 3;
+         INNER JOIN (SELECT DEPTNO, COUNT(*) ECOUNT
+                     FROM EMP
+                     GROUP BY DEPTNO
+                     HAVING COUNT(*) > 3) E
+                    ON DEPT.DEPTNO = E.DEPTNO;
 
 -- -- 64) 사원번호가 7844인 사원보다 빨리 입사한 사원의 이름과 입사일을 출력하시오.
 SELECT ENAME, HIREDATE
@@ -60,13 +62,13 @@ FROM EMP
 WHERE HIREDATE <
       (SELECT HIREDATE
        FROM EMP
-       WHERE EMPNO = 7844)
+       WHERE EMPNO = 7844);
 
 -- -- 65) 직속상사가 KING인 모든 사원의 이름과 급여를 출력하시오.
 SELECT ENAME, SAL, MGR
 FROM EMP
 WHERE MGR =
-      (SELECT EMPNO FROM EMP WHERE ENAME = 'KING')
+      (SELECT EMPNO FROM EMP WHERE ENAME = 'KING');
 
 -- -- 66) 20번 부서에서 가장 급여를 많이 받는 사원과 동일한 급여를 받는
 -- -- 사원의 이름과 부서명,급여, 급여등급을 출력하시오.(emp, dept, salgrade)
@@ -74,7 +76,7 @@ SELECT ENAME, DNAME, SAL, S.GRADE
 FROM EMP
          INNER JOIN DEPT D on EMP.DEPTNO = D.DEPTNO
          INNER JOIN SALGRADE S ON SAL BETWEEN S.LOSAL AND S.HISAL
-WHERE SAL = (SELECT MAX(SAL) FROM EMP WHERE DEPTNO = 20)
+WHERE SAL = (SELECT MAX(SAL) FROM EMP WHERE DEPTNO = 20);
 
 -- --67) 총급여sal+comm가 평균 급여보다 많은 급여를 받는 사람의 부서번호, 이름, 총급여,
 -- --    커미션을 출력하시오.(커미션은 유(O),무(X)로 표시하고 컬럼명은 "comm유무" 출력)
@@ -121,7 +123,7 @@ WHERE SAL = (
              SELECT SAL
              FROM EMP
              WHERE COMM IS NOT NULL
-               AND COMM <> 0))
+               AND COMM <> 0));
 
 -- -- 71) SMITH의 관리자의 이름과 부서명, 근무지역을 출력하시오.
 SELECT ENAME, DNAME, LOC
