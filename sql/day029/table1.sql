@@ -1,0 +1,181 @@
+/*
+    무결성 : column 에 적용
+            column 에 지정하는 성질
+
+    baseball memberNumber -> 중복되지 않는다. 반드시 기입해야 한다.
+
+    Primary Key : 기본키. Not Null, 중복 허용 X
+    Unique Key : 고유키. Nullable, 중복 허용 X
+    Foreign Key : 외래키. 목적: Join -> table 과 table을 연결
+                  외래키로 연결된 컬럼은 연결된 테이블에서 기본키 또는 유니크 키이다.
+    CHECK : 범위를 설정. NULL 을 허용
+    NOT NULL : NULL을 허용하지 않는다.
+
+*/
+
+-- NOT NULL
+CREATE TABLE TB_TEST
+(
+    COL1 VARCHAR2(10) NOT NULL,
+    COL2 VARCHAR2(20)
+);
+
+ALTER TABLE TB_TEST
+    ADD COL3 NUMBER(5) CHECK (COL3 > 0);
+
+ALTER TABLE TB_TEST
+ADD CONSTRAINT CHK CHECK(LENGTH(COL2) > 3);
+
+INSERT INTO TB_TEST(COL1, COL2)
+VALUES ('AAA', '111');
+
+SELECT *
+FROM TB_TEST;
+
+INSERT INTO TB_TEST(COL1)
+VALUES ('BBB');
+
+-- NOT NULL ERROR
+INSERT INTO TB_TEST(COL2)
+VALUES ('222');
+
+-- CHECK ERROR
+INSERT INTO TB_TEST(COL1, COL2, COL3)
+VALUES ('CCC', '111', -1);
+
+
+DROP TABLE TB_TEST
+    CASCADE CONSTRAINTS;
+-- 무결성까지 삭제
+
+-- PRIMARY KEY = NOT NULL, UNIQUE
+CREATE TABLE TB_TEST
+(
+    COL_P VARCHAR2(10)
+        CONSTRAINT PK_TEST PRIMARY KEY,
+    COL1  VARCHAR2(20),
+    COL2  VARCHAR2(30)
+);
+
+INSERT INTO TB_TEST(COL_P, COL1, COL2)
+VALUES ('AAA', '111', 'aaa');
+
+INSERT INTO TB_TEST(COL_P, COL1, COL2)
+VALUES ('BBB', '111', 'aaa');
+
+INSERT INTO TB_TEST(COL1, COL2)
+VALUES ('111', 'aaa');
+
+-- UNIQUE KEY = NULLABLE, UNIQUE
+DROP TABLE TB_TEST;
+
+CREATE TABLE TB_TEST
+(
+    COL_U VARCHAR2(10)
+        CONSTRAINT UK_TEST UNIQUE,
+    COL1  VARCHAR2(20),
+    COL2  VARCHAR2(20)
+);
+
+INSERT INTO TB_TEST(COL_U, COL1, COL2)
+VALUES ('AAA', 'aaa', '111');
+
+INSERT INTO TB_TEST(COL1, COL2)
+VALUES ('aaa', '111');
+
+SELECT *
+FROM TB_TEST;
+
+ALTER TABLE TB_TEST
+    DROP CONSTRAINT UK_TEST;
+
+-->
+-->
+--CREATE TABLE tb_test(
+--    COL_U VARCHAR2(10) CONSTRAINT UK_TEST UNIQUE,  -->이게 없어짐 (제약이 없어짐)
+--    COL1 VARCHAR2(20),
+--    COL2 VARCHAR2(20)
+--);
+
+
+--FOREIGN KEY : 외래키
+--DEPARTMENTS
+DROP TABLE TB_PARENT;
+
+CREATE TABLE TB_PARENT
+(
+    COL_PK VARCHAR2(10)
+        CONSTRAINT PK_PARENT PRIMARY KEY, --중복, NULL 허용안함
+    COL1   VARCHAR2(20),
+    COL2   VARCHAR2(20)
+);
+
+DROP TABLE TB_CHILD;
+--EMPLOYEES
+CREATE TABLE TB_CHILD
+(
+    KEY1   VARCHAR2(10),
+    KEY2   VARCHAR2(20),
+    COL_PK2 VARCHAR2(10), --COL_PK를 외래키로 사용.
+    --이름을 같게하고 용량도 같거나 더 크게 잡아야한다.
+    CONSTRAINT FK_CHILD FOREIGN KEY (COL_PK2) REFERENCES TB_PARENT (COL_PK)
+);
+
+INSERT INTO TB_PARENT(COL_PK, COL1, COL2)
+VALUES ('AAA', 'aaa', '111');
+
+INSERT INTO TB_PARENT(COL_PK, COL1, COL2)
+VALUES ('BBB', 'bbb', '222');
+
+INSERT INTO TB_PARENT(COL_PK, COL1, COL2)
+VALUES ('CCC', 'ccc', '333');
+
+SELECT *
+FROM TB_PARENT;
+
+INSERT INTO tb_child(KEY1, KEY2, COL_PK2) --COL_PK는 외래키
+VALUES ('111', '222', 'AAA');
+
+INSERT INTO tb_child(KEY1, KEY2, COL_PK2)
+VALUES ('111', '222', 'DDD');
+-->없는값 -->>에러난다 !
+--'AAA', 'BBB', 'CCC'중 하나를 집어넣거나
+
+INSERT INTO tb_child(KEY1, KEY2)
+VALUES ('111', '222');
+--아니면 NULL을 허용
+
+--외래키는 기본키에 들어가있는 KEY값의 VALUE를 쓰던지, NULL만을 허용한다!!!
+
+SELECT *
+FROM tb_child;
+
+
+--CHECK : 지정된 값 외에 입력할 수 없고, NULL을 허용한다
+CREATE TABLE TB_CHECK
+(
+    COL1 VARCHAR2(10),
+    KEY1 VARCHAR2(10),
+    CONSTRAINT TB_CHK1 CHECK ( COL1 IN ('사과', '배', '바나나')),
+    CONSTRAINT TB_CHK2 CHECK ( KEY1 > 0 AND KEY1 <= 100)
+);
+
+CREATE TABLE TB_CHECK
+(
+    COL1 VARCHAR2(10) CHECK (COL1 IN ('사과', '배', '바나나')),
+    KEY1 VARCHAR2(10) CHECK (KEY1 BETWEEN 1 AND 100)
+);
+
+DROP TABLE TB_CHECK;
+
+INSERT INTO TB_CHECK(COL1, KEY1)
+VALUES ('사과', 12); --범위값 안에 들어가있음
+
+INSERT INTO TB_CHECK(COL1, KEY1)
+VALUES ('사과', 0); --범위값 안에 들어가있지 않음 --> 무결성 위반 --> 에러
+
+INSERT INTO TB_CHECK(COL1, KEY1)
+VALUES ('', 25); --범위값 안에 들어가있음 (NULL 허용)
+
+INSERT INTO TB_CHECK(COL1, KEY1)
+VALUES ('', ''); --가능하긴 한데.. 이렇게 해서 넣는 의미가 없다
