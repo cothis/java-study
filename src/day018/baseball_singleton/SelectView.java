@@ -1,7 +1,5 @@
 package day018.baseball_singleton;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 import javax.swing.text.html.Option;
 import java.util.Optional;
 import java.util.Scanner;

@@ -1,7 +1,5 @@
 package day019.awt2;
 
-import com.sun.deploy.uitoolkit.Window;
-
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
