@@ -27,7 +27,9 @@ public class MemoryMemberRepository implements MemberRepository{
         for (Member member : list) {
             this.addMember(member);
         }
-        sequence = list.get(list.size()-1).getId();
+        if (list.size() > 0) {
+            sequence = list.get(list.size()-1).getId();
+        }
     }
 
     public void setMemberTableModel(MemberTableModel dm) {

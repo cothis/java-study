@@ -1,5 +1,7 @@
 package day031_jdbc.jdbc2.statement;
 
+import day032_jdbc.vo.StudentDao;
+
 import java.sql.*;
 
 public class StudentManagerSelect {
