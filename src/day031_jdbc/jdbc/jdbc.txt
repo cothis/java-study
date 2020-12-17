@@ -1,9 +1,0 @@
-JDBC 이용한 DB 프로그래밍 방법
-0. JDBC 라이브러리 사용 개발환경 설정(jdbc.jar 빌드패스 등록)
-1. JDBC 드라이버 로딩
-2. DB연결하고 Connection 객체 생성
-3. Statement 문 생성 및 실행(SQL문 - 쿼리문 실행)
-4. 결과물에 대한 처리
-   - SELECT : 조회 데이터 결과값 처리
-   - INSERT/UPDATE/DELETE : INT 값(처리 건수) 처리
-5. 클로징 처리에 의한 자원 반납
