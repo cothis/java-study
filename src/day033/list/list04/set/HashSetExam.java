@@ -50,6 +50,7 @@ public class HashSetExam {
                 set.add("김유신2");
             }
         }
+        
 
         System.out.println("set : " + set);
 
