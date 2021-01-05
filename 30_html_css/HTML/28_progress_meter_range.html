@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>progress, meter, input range</title>
+</head>
+<body>
+    <h2>progress, meter, input range</h2>
+    <form action="">
+        <!-- progress : 진행중인 상태값을 의미 -->
+        <progress max="60" value="10"></progress>
+        전체 60초 중에 경과 시간
+        <hr>
+
+        <h3>전체 100명 중 50등을 차지(meter) : 반장선거 득표율</h3>
+        <label>홍길동<meter value="50" max="100"></meter>50%</label><br>
+        <label>김유신<meter value="30" max="100"></meter>30%</label><br>
+        <label>강감찬<meter value="20" max="100"></meter>20%</label><br>
+        <hr>
+
+        <label>값 입력(0~100) <input type="range" name="range" min="0" max="100" step="10"></label>
+        <hr>
+
+        <input type="submit" value="전송">
+    </form>
+
+</body>
+</html>
