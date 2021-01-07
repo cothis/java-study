@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Background Color</title>
+    <style>
+        h1 {
+            background-color: aqua;
+        }
+
+        h2 {
+            background-color: yellow;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        #yellow {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+<!-- CSS 문법
+선택자 {
+    속성명: 속성값;
+    속성명: 속성값;
+}
+
+작성위치에 따른 사용 방법
+1. HTML 태그 내부(inline style, 속성 형태)
+  ex) <div style="background-color: #333; color: red;"></div>
+2. Head 태그 > Style 태그 내부
+3. Head 태그 > Link 태그 이용(외부 파일)
+  ex) <link rel="stylesheet" href="../css/style.css">
+-->
+    <h1>CSS 바탕색 지정 : background-color</h1>
+    <h2>H2 태그 : 속성없음</h2>
+    <h2 class="red">H2 태그 : class="red" 속성 부여</h2>
+    <h2 class="green">H2 태그 : class="green" 속성 부여</h2>
+    <hr>
+    <h3>배경색 노랗게</h3>
+    <div class="yellow">배경색이 노란색</div>
+    <hr>
+
+<p>일반 p태그(id, class 속성없음)</p>
+<p id="yellow" class="green">id 속성을 가진 p태그</p>
+<p class="green">class 속성을 가진 p태그</p>
+<hr>
+
+<p>일반 p태그(id, class 속성없음)</p>
+<div>
+    <p>div 안에 있는 p태그</p>
+    <p class="green">div 안에 있는 p태그(class="green")</p>
+</div>
+
+</body>
+</html>
