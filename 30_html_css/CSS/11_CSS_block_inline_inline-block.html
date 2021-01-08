@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>block, inline, inline-block</title>
+    <style>
+        .inline-block {
+            border: 1px solid gray;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+        
+        span {
+            background-color: aqua;
+            width: 100px;
+            height: 100px;
+        }
+        
+        div {
+            border: 1px solid gray;
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS display: block, inline, inline-block</h1>
+    <h3>div 태그는 block 속성</h3>
+    <p>block 속성은 브라우저 좌측부터 우측까지 영역을 차지</p>
+    <p>block 속성은 크기를 가짐 - width, height 지정</p>
+    <div>div는 block 속성</div>
+    <hr>
+    
+    <h3>span 태그는 inline 속성</h3>
+    <p>inline 속성은 라인 내에서 영역을 차지(데이터 크기만큼)</p>
+    <p>inline 속성은 내용(contents)의 크기로 정해짐</p>
+    <span>span은 inline 속성. </span><span>그래서 한 줄로 표시된다.</span>
+    
+    <h3>inline-block 속성</h3>
+    <p>inline-block 속성은 라인 내에서 영역을 차지(inline)</p>
+    <p>inline-block 속성은 크기를 가짐 - width, height 지정(block)</p>
+    inline-block은 <span class="inline-block">전체 영역을 차지하지 않고</span> 한 줄에 표시되지만,
+    <div class="inline-block">가로, 세로 크기</div>를 가진다.
+
+</body>
+</html>

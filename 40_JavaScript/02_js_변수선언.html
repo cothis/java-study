@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //변수선언 키워드(명령어) : var, let, const
+        //변수명 사용문자 : 영문대소문자, 숫자, _, $
+        //기본자료형 : 문자열(string), 숫자(number), boolean
+        var str = "안녕하세요";
+        var num = 100;
+        var bool = true;
+        var vNull = null;
+        var undef;
+        
+        document.write("문자열 출력 : " + str + "<br>");
+        document.write("숫자값 출력 : " + num, "<br>");
+        document.write("숫자값 출력 : " + num + 1 + "<br>");
+        document.write("숫자값 출력 : " + (num + 1) + "<br>");
+        document.write("bool 출력 : " + bool + "<br>");
+        document.write("null값 출력 : " + vNull + "<br>");
+        document.write("undef값 출력 : " + undef + "<br>"); //undefined
+        document.write("<hr>");
+        
+        //변수 타입 확인 : typeof
+        document.write("str type : " + typeof (str) + "<br>");
+        document.write("num type : " + typeof (num) + "<br>");
+        document.write("bool type : " + typeof (bool) + "<br>");
+        document.write("vNull type : " + typeof (vNull) + "<br>");
+        document.write("undef type : " + typeof (undef) + "<br>");
+        document.write("<hr>");
+        
+        //변수에 고정된 타입의 개념이 없음(모든 데이터 저장 가능)
+        str = 500;
+        str += 200;
+        document.write("typeof str : " + str + ", " + typeof (str) + "<br>");
+        
+        str = true;
+        document.write("typeof str : " + str + ", " + typeof (str) + "<br>");
+        
+        var sum = num + str; // 100 + true(1) = 101
+        document.write("합계(num + true) : " + sum + "<br>");
+        
+        sum = num + false;
+        document.write("합계(num + false) : " + sum + "<br>");
+        document.write("<hr>");
+        
+        //------------------------------------------------------------------
+        // NaN(Not a Number) : 숫자가 아님 - 연산결과가 숫자가 아닌 경우
+        document.write("num + undef : " + (num + undef) + "<br>");
+        document.write("num + 'A' : " + (num * 'A') + "<br>");
+        
+        document.write(">>>> 자바스크립트 작성 끝", "<br>");
+        document.write("<p>###################</p>")
+    
+    </script>
+</head>
+<body>
+    <h1>javascript 변수 선언</h1>
+</body>
+</html>

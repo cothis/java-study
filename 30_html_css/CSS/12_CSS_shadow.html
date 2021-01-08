@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>text-shadow</title>
+    <style>
+        body {
+            font-family: Arial, serif;
+            font-size: 5rem;
+            background-color: black;
+            color: white;
+        }
+        
+        .shadow {
+            text-shadow: 0 0 4px #ccc;
+            text-shadow: 0 0 4px #ccc, 0 -5px 4px #ff3;
+            text-shadow: 0 0 4px #ccc, 0 -5px 4px #ff3, 2px -10px 6px #fd3;
+            text-shadow: 0 0 4px #ccc, 0 -5px 4px #ff3, 2px -10px 6px #fd3, -2px -15px 11px #f80;
+            text-shadow: 0 0 4px #ccc, 0 -5px 4px #ff3, 2px -10px 6px #fd3, -2px -15px 11px #f80, 2px -19px 18px #f20;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello World!!!</h1>
+    <h1 class="shadow">Hello World!!!</h1>
+    
+</body>
+</html>

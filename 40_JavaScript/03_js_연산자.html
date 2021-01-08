@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS 연산자</title>
+    <script>
+        // 증감연산자 : ++, --
+        let num = 100;
+        document.write("num : " + num + "<br>");
+        
+        let res = ++num; // num값을 1증가시키고 res에 저장
+        document.write(`res : ${res}<br>`);
+        document.write(`num : ${num}<br>`);
+        document.write("<hr>");
+        
+        num = 100;
+        res = num++; //num을 res에 넣고 num값을 1증가
+        document.write(`res : ${res}<br>`);
+        document.write(`num : ${num}<br>`);
+        document.write("<hr>");
+        
+        // 부정연산자 : ! (not)
+        document.write(`true : ${true}<br>`);
+        document.write(`true : ${!true}<br>`);
+        
+        // 산술연산자 : +, -, *, /, %(나머지 연산)
+        let num1 = 100;
+        let num2 = 3;
+        document.write(`num1 : ${num1}, num2 : ${num2}<br>`);
+        document.write(`num1 + num2 = ${num1 + num2}<br>`);
+        document.write(`num1 - num2 = ${num1 - num2}<br>`);
+        document.write(`num1 * num2 = ${num1 * num2}<br>`);
+        document.write(`num1 / num2 = ${num1 / num2}<br>`);
+        document.write(`num1 % num2 = ${num1 % num2}<br>`);
+        document.write("<hr>");
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

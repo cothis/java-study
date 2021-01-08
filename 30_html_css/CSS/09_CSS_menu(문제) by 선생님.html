@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        nav ul {
+            /*border: 1px solid blue;*/
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #444;
+            overflow: hidden;
+        }
+        
+        nav li {
+            /*border: 1px solid red;*/
+            float: left;
+            border-right: 2px solid #999;
+        }
+        
+        nav li:last-child {
+            float: right;
+            border-left: 2px solid #999;
+            border-right: none;
+        }
+        
+        nav a {
+            /*border: 1px solid yellow;*/
+            display: block;
+            padding: 20px;
+            text-decoration: none;
+            font-size: 1.5em;
+            color: white;
+        }
+        
+        nav .active {
+            background-color: red;
+        }
+        
+        nav li:not(.active):hover {
+            background-color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="active">
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">News</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+            <li class="about">
+                <a href="#">About</a>
+            </li>
+        </ul>
+    </nav>
+    <hr>
+    
+    <div>
+        <ul>
+            <li><a href="#">사과</a></li>
+            <li><a href="#">복숭아</a></li>
+            <li><a href="#">배</a></li>
+        </ul>
+    </div>
+</body>
+</html>
