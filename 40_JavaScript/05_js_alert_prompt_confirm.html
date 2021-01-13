@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS : alert, prompt, confirm</title>
+    <script>
+        // alert, prompt, confirm : window 객체에 있는 함수
+        // alert : 브라우저 창에 메시지 표시
+        window.alert("자바스크립트 진행중~~");
+        alert("window.alert 에서 window 생략 가능");
+        
+        // prompt : 메시지 창으로부터 값을 입력받을 때 사용 // 결과값은 string으로 반환됨
+        // 취소인 경우 null 값 리턴
+        let name = prompt("[prompt] 이름을 입력하세요\n(반드시 입력하세요)", "이름 없음");
+        alert(`입력값 : ${name}`);
+        document.write(`<h3>유저 이름 : ${name}</h3>`);
+        
+        // ----------------------------------------------------------------------
+        // prompt 에서 입력되는 값은 모두 문자열(string) 처리됨
+        let num = prompt("[prompt] 숫자를 입력하세요", "100");
+        num = num + 111; // 덧셈연산 시도
+        alert(`연산결과값 : ${num}`); // 100111
+        
+        // string -> number 변경 후 계산 해야한다.
+        num = prompt("[prompt] 숫자를 입력하세요", "100");
+        num = parseInt(num) + 111; // 덧셈연산 시도
+        alert(`연산결과값 : ${num}`); // 100111
+        
+        
+        //=======================================================================
+        // confirm : 메시지 창을 띄우고, 사용자의 의견 묻기
+        // 확인 : true, 취소 : false 값을 리턴
+        let answer = confirm("정말 진행하시겠습니까?");
+        alert(`답변 : ${answer}`);
+        if (answer) {
+            alert(`[작업진행] 데이터 삭제처리~~~`);
+        } else {
+            alert(`[작업진행] 삭제 작업 취소~~~`);
+        }
+    </script>
+</head>
+<body>
+    <h1>자바스크립트 진행중</h1>
+</body>
+</html>

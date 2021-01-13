@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS 반복문 : for, 구구단 테이블</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        caption {
+            padding: 15px;
+        }
+        
+        td,
+        th {
+            border: 1px solid black;
+            padding: 15px;
+            width: 150px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #312E41;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #eaeaea;
+        }
+    </style>
+    <script>
+        let htmlTags = "";
+        htmlTags += `<h1>구구단 출력(2-9단)</h1>`;
+        htmlTags += `<table>`;
+        htmlTags += `<thead>`;
+        htmlTags += `<tr>`;
+        for (let i = 2; i <= 9; i++) {
+            htmlTags += `<th>${i}단</th>`;
+        }
+        htmlTags += `</tr>`;
+        htmlTags += `</thead>`;
+        htmlTags += `<tbody>`;
+        for (let column = 1; column <= 9; column++) {
+            htmlTags += `<tr>`;
+            for (let dan = 2; dan <= 9; dan++) {
+                htmlTags += `<td>${dan} * ${column} = <strong>${dan * column}</strong></td>`
+            }
+            htmlTags += `</tr>`;
+        }
+        htmlTags += `</tbody>`;
+        htmlTags += `</table>`;
+        document.write(htmlTags);
+    
+    </script>
+</head>
+<body>
+    <!--
+    <h1>구구단 출력(2-9단)</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>2단</th>
+                <th>3단</th>
+                <th>4단</th>
+                <th>5단</th>
+                <th>6단</th>
+                <th>7단</th>
+                <th>8단</th>
+                <th>9단</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2*1=2</td>
+                <td>3*1=3</td>
+                <td>4*1=4</td>
+                <td>5*1=5</td>
+                <td>6*1=6</td>
+                <td>7*1=7</td>
+                <td>8*1=8</td>
+                <td>9*1=9</td>
+            </tr>
+        </tbody>
+    </table>
+-->
+</body>
+</html>

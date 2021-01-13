@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS function return, 익명함수</title>
+    <script>
+        // 리턴값이 있는 함수
+        // function 함수명(파라미터) { return 리턴값; }
+        
+        function plus(a, b) {
+            document.write(`a : ${a}, b: ${b}<br>`);
+            return a + b;
+        }
+        
+        let sum = plus(100, 200);
+        document.write(`plus(100, 200) : ${sum}<br>`);
+        document.write(`<hr>`);
+        
+        sum = plus(100);
+        document.write(`plus(100) : ${sum}<br>`); // NaN
+        document.write(`<hr>`);
+        
+        // ============================================
+        // 익명함수 : 이름이 없는 함수
+        // function (매개변수) { }
+        let fn = function (param) {
+            document.write(`익명함수의 매개변수값 : ${param}<br>`);
+        };
+        fn(); // 변수에 저장된 함수 호출, 이 경우 param 은 undefined
+        fn("야이야이야");
+        let name = "김유신";
+        fn(name);
+        document.write(`<hr>`);
+        
+        //--------------------------
+        document.write(`<h3>자동실행 함수</h3>`);
+        (function (param) {
+            document.write(`익명함수 자동실행 매개변수값 : ${param}<br>`);
+        })("홍길동~~~");
+        document.write(`자동실행 함수 실행 후<br>`);
+        document.write(`<hr>`);
+        
+        ((param) => {
+            document.write(`람다함수 실행 매개변수값 : ${param}<br>`);
+        })("전 람다에요");
+        document.write(`람다함수 실행 후<br>`);
+        document.write(`<hr>`);
+        
+        // ===============================================================
+        // call back
+        document.write(`<h3>콜백(callback) 함수</h3>`);
+        // 콜백함수 : 실행 시 나중에 호출되어 실행되는 함수
+        
+        
+        
+        let fn2 = function (param) { // 파라미터가 함수
+            param("안녕 ~ 나는 콜백함수야");
+        };
+        
+        function showMessage(msg) {
+            document.write(`<p>${msg}</p>`);
+        }
+        
+        
+        showMessage("안녕!!!");
+        fn2(showMessage); // 파라미터로 함수 전달
+    
+    </script>
+</head>
+<body>
+
+</body>
+</html>

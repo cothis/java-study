@@ -26,7 +26,7 @@
         document.write(`true : ${true}<br>`);
         document.write(`true : ${!true}<br>`);
         
-        // 산술연산자 : +, -, *, /, %(나머지 연산)
+        // 산술연산자 : +, -, *, /, %(나머지 연산), **(x의 y승)
         let num1 = 100;
         let num2 = 3;
         document.write(`num1 : ${num1}, num2 : ${num2}<br>`);
@@ -35,7 +35,86 @@
         document.write(`num1 * num2 = ${num1 * num2}<br>`);
         document.write(`num1 / num2 = ${num1 / num2}<br>`);
         document.write(`num1 % num2 = ${num1 % num2}<br>`);
+        document.write(`num1 ** num2 = ${num1 ** num2}<br>`);
         document.write("<hr>");
+        
+        //=========================================
+        function hr(a) {
+            let iter = 1;
+            if (a === undefined) {
+                let iter = 1;
+            } else {
+                iter = a;
+            }
+            for (let i = 0; i < iter; i++) {
+                document.write("<hr>");
+            }
+        }
+        
+        hr();
+        
+        document.write("<h3>숫자형태의 문자열을 숫자타입 변환</h3>")
+        let str = "100";
+        str = str + 1; // 문자열 붙이기 연산처리 - 1001
+        
+        document.write(`str : ${str} - ${typeof str}<br>`);
+        
+        str = "100";
+        // str = str * 1 + 100; // 자동 형변환 처리(string -> number), 이때 string이 숫자형태가 아니면 NaN
+        // str = Number(str) + 100; // 명시적 형변환(string -> number), 마찬가지로 숫자형태가 아니면 NaN
+        str = parseInt(str) + 100;
+        document.write(`str : ${str} - ${typeof str}<br>`);
+        hr();
+        
+        //=============================================
+        //대입연산자 : =, +=, -=, *=, /=, %=, **=
+        document.write(`<h3>대입연산자 : =, +=, -=, *=, /=, %=, **=</h3>`)
+        num1 = 100;
+        num2 = 3;
+        
+        document.write(`num1 : ${num1}, num2 : ${num2}<br>`);
+        
+        let result = num1;
+        document.write(`result : ${result}<br>`);
+        
+        document.write(`result += ${num2} -> ${result += num2}<br>`);
+        document.write(`result -= ${num2} -> ${result -= num2}<br>`);
+        document.write(`result *= ${num2} -> ${result *= num2}<br>`);
+        document.write(`result /= ${num2} -> ${result /= num2}<br>`);
+        document.write(`result %= ${num2} -> ${result %= num2}<br>`);
+        document.write(`result = ${result = 2}<br>`);
+        document.write(`result **= ${num2} -> ${result **= num2}<br>`);
+        
+        hr();
+        
+        //=================================================
+        //비교연산자 : >, <, >=, <=, ==, !=,   ===, !==
+        // == : 값 일치 true (!= : 값이 다르면 true) : 값만 확인 "100" == 100 - true
+        // === : 값 일치 && 타입 일치 true
+        // !== : 값 불일치 || 타입 불일치 true
+        document.write(`<h3>비교연산자 : >, <, >=, <=, ==, !=,   ===, !==</h3>`)
+
+        let a = 100; // 숫자(number)
+        let b = 200;
+        let c = "100";
+        let d = "200";
+        
+        document.write(`a : ${a}, b: ${b}<br>`);
+        document.write(`a > b : ${a > b}<br>`);
+        document.write(`a < b : ${a < b}<br>`);
+        document.write(`a >= b : ${a >= b}<br>`);
+        document.write(`a <= b : ${a <= b}<br>`);
+        
+        hr();
+        document.write(`<p>숫자 100과 문자열 '100' 비교(===, !=)</p>`);
+        document.write(`a : ${a}, c: ${c}<br>`);
+        document.write(`a == c : ${a == c}<br>`);
+        document.write(`a != c : ${a != c}<br>`);
+
+        document.write(`<p>숫자 100과 문자열 '100' 비교(===, !==)</p>`);
+        document.write(`a : ${a}, c: ${c}<br>`);
+        document.write(`a == c : ${a === c}<br>`);
+        document.write(`a != c : ${a !== c}<br>`);
         
     </script>
 </head>

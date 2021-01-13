@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS function</title>
+    <script>
+        // function 함수명(매개변수) { }
+        // function 함수명(매개변수) { return 리턴값; }
+        // function (매개변수) { } : 익명함수(변수에 저장 시, 재사용 가능)
+        // ---------------------------------------------
+        
+        var str = "전역변수str";
+
+        test(); // 함수 선언문 이전, 이후 모두 사용가능
+        function test() {
+            document.write(`>> test() 함수 실행<br>`);
+        }
+        test(); // 함수 선언문 이전, 이후 모두 사용가능
+        
+        function test() { // 중복선언 시, 덮어쓴다.
+            document.write(`>> test() 함수 재정의 실행<br>`);
+        }
+        
+        function test(param) { // 자바스크립트는 오버로딩이 없어서 그냥 중복선언으로 덮어쓴다.
+            document.write(`>> test(param) 함수 실행 ${param}<br>`);
+        }
+        
+        test("파라미터~~~");
+        test("파라미터1", "파라미터2"); // 2번째 파라미터 값은 사용되지 않음(버려짐)
+        
+        // ====================================================
+        var test = "함수명과 동일한 이름으로 변수사용";
+        document.write(`test : ${test}<br>`);
+        
+        document.write("JS 끝===========<br>");
+        
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

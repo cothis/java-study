@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function hr(a) {
+            if (a === 0) return;
+            
+            const iter = a || 1;
+            for (let i = 0; i < iter; i++) {
+                document.write("<hr>");
+            }
+        }
+        
+        // 논리연산자 : &&(AND), ||(OR), !(NOT)
+        document.write(`<h3>논리연산자 : &&(AND), ||(OR), !(NOT)</h3>`);
+        document.write(`20 > 10 && 300 > 200 (true and true)&nbsp; : ${20 > 10 && 300 > 200}<br>`);
+        document.write(`20 > 10 && 300 < 200 (true and false) : ${20 > 10 && 300 < 200}<br>`);
+        document.write(`20 < 10 && 300 > 200 (false and true) : ${20 < 10 && 300 > 200}<br>`);
+        document.write(`20 < 10 && 300 < 200 (false and false): ${20 < 10 && 300 < 200}<br>`);
+        hr();
+        
+        document.write(`20 > 10 || 300 > 200 (true or true)&nbsp; : ${20 > 10 || 300 > 200}<br>`);
+        document.write(`20 > 10 || 300 < 200 (true or false) : ${20 > 10 || 300 < 200}<br>`);
+        document.write(`20 < 10 || 300 > 200 (false or true) : ${20 < 10 || 300 > 200}<br>`);
+        document.write(`20 < 10 || 300 < 200 (false or false): ${20 < 10 || 300 < 200}<br>`);
+        hr();
+        
+        document.write(`!true : ${!true}<br>`);
+        document.write(`!(20 > 10 && 300 > 200) : ${!(20 > 10 && 300 > 200)}<br>`);
+        document.write(`!false : ${!false}<br>`);
+        document.write(`!(20 > 10 && 300 < 200) : ${!(20 > 10 && 300 < 200)}<br>`);
+        hr();
+        
+        //---------------------------------------------------
+        //삼항연산자 : 조건식 ? 참실행문 : 거짓실행문;
+        //조건식 true  -> 참실행문 실행
+        //조건식 false -> 거짓실행문 실행
+        document.write(`<h3>삼항연산자 : 조건식 ? 참실행문 : 거짓실행문</h3>`);
+        let a = 700;
+        let b = 500;
+        let result = (a > b) ? "a > b" : "a <= b";
+        document.write(`a : ${a}, b: ${b}<br>`);
+        document.write(`result : ${result}<br>`);
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

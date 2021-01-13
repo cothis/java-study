@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS 2차원 배열</title>
+    <script>
+        // 배열(Array) 2차원 배열
+        // [ [], [], [] ]
+        let arr = [ ["홍길동", 27, "서울"],
+                    ["김유신", 30, "부산"] ];
+        document.write(`arr.length : ${arr.length}<br>`);
+        document.write(`arr[0].length : ${arr[0].length}<br>`);
+        document.write(`arr : ${arr}<br>`);
+        document.write(`arr[0] : ${arr[0]}<br>`);
+        document.write(`arr[0][0] : ${arr[0][0]}<br>`);
+        document.write(`arr[0][1] : ${arr[0][1]}<br>`);
+        document.write("<hr>");
+        
+        // =========================================================
+        arr[1][0] = "을지문덕";
+        document.write(`arr[1] : ${arr[1]}<br>`);
+        document.write(`arr[1][0] : ${arr[1][0]}<br>`);
+        document.write("<hr>");
+        
+        // =========================================================
+        // new Array(new Array(), new Array());
+        arr = new Array(new Array("홍길동", 27, "서울"),
+                        new Array("김유신", 30, "부산"));
+        
+        // new Array();
+        // [0] = new Array();
+        // [1] = new Array();
+        arr = new Array();
+        arr[0] = new Array("홍길동", 27, "서울");
+        arr[1] = new Array("김유신", 30, "부산", "010-1111-1111");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
