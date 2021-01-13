@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>window.setTimeout()</title>
+    <script>
+        //window.setTimeout : 정해진 시간에 한 번만 동작
+        //window.setTimeout(액션, 밀리초)
+        //window.clearTimeout : 취소
+        let i = 0;
+        let timeout = setTimeout("console.log('5초 뒤에 출력: ' + ++i)", 5000);
+        let t2 = setTimeout(console.log, 5000, `5초 뒤에 출력: + ${++i}`);
+        let t3 = setTimeout(() => console.log('5초 뒤에 출력: ' + ++i),5000);
+    </script>
+</head>
+<body>
+    <h3>window.setTimeout() 알아보기</h3>
+    <button onclick="clearTimeout(timeout)">clearTimeout() 정지버튼</button>
+</body>
+</html>

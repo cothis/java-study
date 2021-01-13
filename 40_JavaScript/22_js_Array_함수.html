@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Array 함수</title>
+    <script>
+        //배열(Array) 함수
+        let arr = ["사당", "교대", "방배", "강남"];
+        document.write(`arr: ${arr}<br>`);
+        document.write(`arr.toString() : ${arr.toString()}<br>`);
+        document.write(`arr.length: ${arr.length}<br>`);
+        document.write(`<hr>`);
+        
+        //includes() : 배열에 데이터 존재 여부
+        document.write(`arr.includes("사당") : ${arr.includes("사당")}<br>`)
+        document.write(`arr.includes("분당") : ${arr.includes("분당")}<br>`)
+        document.write(`<hr>`);
+        
+        //sort() : 배열에 있는 데이터를 오름차순 정렬(문자열 비교 처리)
+        document.write(`arr: ${arr}<br>`);
+        let str = arr.sort();
+        document.write(`sorted arr: ${arr}<br>`);
+        document.write(`str: ${str} - typeof str : ${typeof str}<br>`);
+        document.write(`<hr>`);
+        
+        //reverse() : 배열 데이터 앞 <-> 뒤 위치 바꿈
+        document.write(`arr: ${arr}<br>`);
+        str = arr.reverse();
+        document.write(`arr.reverse(): ${arr}<br>`);
+        document.write(`str: ${str} - typeof str : ${typeof str}<br>`);
+        document.write(`<hr>`);
+
+        //slice(start, end) : start 부터 end 이전까지 자르기
+        document.write(`arr: ${arr}<br>`);
+        str = arr.slice(1,3);
+        document.write(`arr.slice(1,3): ${arr}<br>`);
+        document.write(`str: ${str} - typeof str : ${typeof str}<br>`);
+        document.write(`<hr>`);
+        
+        //splice(start, deleteCount, ...items) : start 부터 deleteCount 만큼 데이터 삭제하고 ...items 는 삽입
+        document.write(`arr: ${arr}<br>`);
+        str = arr.splice(1,2, "잠실", "시청", "신도림");
+        document.write(`arr.splice(1,2, "잠실", "시청", "신도림"): ${arr}<br>`);
+        document.write(`str: ${str} - typeof str : ${typeof str}<br>`);
+        document.write(`<hr>`);
+        
+        //concat(추가할 데이터) : 데이터 붙이기
+        document.write(`arr: ${arr}<br>`);
+        let arr2 = ["종로1가", "종로2가", "종로3가"];
+        document.write(`arr2: ${arr2}<br>`);
+        str = arr.concat(arr2);
+        document.write(`str = arr.concat(arr2): ${arr}<br>`);
+        document.write(`str: ${str} - typeof str : ${typeof str}<br>`);
+        document.write(`<hr>`);
+        
+        //===============================================
+        //pop, push, shift, unshift
+        //pop(): 배열의 마지막 인덱스 값 추출 후 삭제(마지막 데이터 꺼내기) : 원본도 변경됨
+        document.write(`arr: ${arr}<br>`);
+        str = arr.pop();
+        document.write(`arr.pop(): ${arr}<br>`);
+        document.write(`str: ${str} - typeof str : ${typeof str}<br>`);
+        document.write(`<hr>`);
+        
+        //push(...items): 배열의 마지막에 데이터 추가(인덱스 번호 : 배열.length) : 원본 변경됨
+        document.write(`arr: ${arr}<br>`);
+        str = arr.push("push1", "push2");
+        document.write(`arr.push("push1", "push2"): ${arr}<br>`);
+        document.write(`str: ${str} - typeof str : ${typeof str}<br>`);
+        document.write(`<hr>`);
+
+        //shift(): 배열의 첫번째 인덱스 값 추출 후 삭제(마지막 데이터 꺼내기) : 원본도 변경됨
+        document.write(`arr: ${arr}<br>`);
+        str = arr.shift();
+        document.write(`arr.shift(): ${arr}<br>`);
+        document.write(`str: ${str} - typeof str : ${typeof str}<br>`);
+        document.write(`<hr>`);
+
+        //unshift(...items): 배열의 앞에 데이터 추가(인덱스 번호 : 배열.length) : 원본 변경됨
+        document.write(`arr: ${arr}<br>`);
+        str = arr.unshift("unshift1", "unshift2");
+        document.write(`arr.unshift("unshift1", "unshift2"): ${arr}<br>`);
+        document.write(`str: ${str} - typeof str : ${typeof str}<br>`);
+        document.write(`<hr>`);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
