@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>인접관계 선택자</title>
+    <script>
+        addEventListener('DOMContentLoaded', function () {
+            console.log(">>> contentLoaded >>>");
+            let div = document.querySelector("#div1");
+            console.log(div);
+            
+            let p1 = div.firstElementChild;
+            console.log("p1 : " + p1);
+            p1.style.color = "blue";
+            p1.innerHTML = "<em>내용-1 : 변경처리</em>";
+            
+            let p2 = p1.nextElementSibling;
+            p2.style.backgroundColor = "green";
+            
+            let p3 = p2.nextElementSibling;
+            p3.style.backgroundColor = "yellow";
+            
+            // 속성 컨트롤
+            // 속성값 조회 : getAttribute("속성명");
+            console.log("id : " + div.getAttribute("id"));
+            console.log("title : " + div.getAttribute("title"));
+            // 속성값 설정(변경) : setAttribute("속성명", "속성값");
+            div.setAttribute("title", "변경된 title");
+            
+            // children : 자식 태그 요소들(배열형태)
+            let divChildren = div.children;
+            console.log(divChildren);
+    
+            for (let divChild of divChildren) {
+                divChild.style.border = "3px solid red";
+            }
+            
+            console.log("div.innerHTML : " + div.innerHTML);
+            
+            div.style.border = "3px dotted orange";
+            div.style.border = "5px dashed blue";
+        });
+    </script>
+</head>
+<body>
+    <h2>DOM 인접관계 선택자</h2>
+    <div id="div1" title="내용묶음div">
+        <p>내용-1</p>
+        <p>내용-2</p>
+        <p>내용-3</p>
+        <p>내용-4</p>
+        <div>
+            <p>#div1 > div > p 내용-5</p>
+        </div>
+    </div>
+    
+    <script>
+        /* 인접 관계 선택자
+        parentNode : 부모 노드 선택
+        
+        childNodes : 자녀 노드들 선택(배열 - 태그, 태그 이외 노드 포함)
+        children : 자식 태그 요소들(배열형태 - 태그만)
+        
+        firstChild : 첫째 자식노드
+        firstElementChild : 첫째 자식 요소
+        
+        previousSibling : 이전 형제 노드(태그, 태그 이외 노드 포함)
+        previousElementSibling: 이전 형제 요소(태그만)
+        
+        nextSibling : 다음 형제 노드(태그, 태그 이외 노드 포함)
+        nextElementSibling : 다음 형제 요소(태그만)
+        */
+    </script>
+</body>
+</html>

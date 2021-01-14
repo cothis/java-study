@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>두번째 페이지</title>
+</head>
+<body>
+    <h1>두번째 페이지</h1>
+    <a href="03_third.html">3 페이지로 이동</a>
+    <p>
+        <button>이전페이지(back)</button>
+        <button>다음페이지(forward)</button>
+    </p>
+    
+    <script>
+        let prev = document.querySelector("button");
+        prev.addEventListener("click", function() {
+            console.log("이벤트");
+            history.back();
+        });
+        let next = prev.nextElementSibling;
+        next.addEventListener("click", function() {
+            console.log("다음");
+            history.forward();
+        })
+    </script>
+</body>
+</html>
