@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 form</title>
+    <script>
+        let submitForm1 = function() {
+            let pw2 = document.form1.pw2;
+            pw2.value = document.form1.pw1.value;
+            pw2.disabled = true; // 수정할수 없게 + 서버로 전송 안함
+            console.log("pw2.value : " + pw2.value);
+            return false;
+        };
+        
+        addEventListener('DOMContentLoaded', function() {
+            console.log("DOM Content Loaded");
+            
+            // 첫번째 폼 요소 처리
+            // document.form1.onsubmit = submitForm1;
+            document.form1.addEventListener('submit', function(event) {
+                submitForm1();
+                event.preventDefault();
+            })
+            
+            // 두번째 폼 요소 처리
+            document.form2.addEventListener('submit', function(event) {
+                let accept = document.form2.accept;
+                if (accept.checked) {
+                    console.log("가입 시도 진행");
+                } else {
+                    alert("약관에 동의해야 합니다");
+                    event.preventDefault();
+                }
+            });
+            
+            // 모두 동의 처리
+            // 체크상태 : 과목1,2,3 모두 체크
+            // 체크해제 : 모두 체크 해제
+            const subjects = [document.form2.subject1, document.form2.subject2, document.form2.subject3];
+            document.form2.allCheck.addEventListener('change', function() {
+                console.log(this.checked);
+                
+                for (const subject of subjects) {
+                    subject.checked = this.checked;
+                }
+            });
+            
+            // 각 과목 체크해제 시, allCheck도 해제, 모두 체크되면 allCheck도 체크
+            subjects.forEach(function(subject) {
+                subject.addEventListener('change', function() {
+                    if (this.checked === false) {
+                        document.form2.allCheck.checked = false;
+                        return true;
+                    }
+                    
+                    let allChecked = true;
+                    for (const subject of subjects) {
+                        allChecked &&= subject.checked;
+                    }
+                    document.form2.allCheck.checked = allChecked;
+                });
+            });
+        });
+    </script>
+    <style>
+        label {
+            user-select: none;
+        }
+        
+        #terms {
+            width: 400px;
+            height: 100px;
+            border: 1px solid gray;
+            overflow: auto
+        }
+    </style>
+</head>
+<body>
+    <form action="" name="form1">
+        <fieldset>
+            <legend>폼요소1(비밀번호 확인)</legend>
+            <p>
+                <label for="user_pw1">비밀번호</label>
+                <input type="password" name="pw1" id="user_pw1">
+            </p>
+            <p>
+                <label for="user_pw2">확인된 비밀번호</label>
+                <input type="text" name="pw2" id="user_pw2" value="1234">
+                <input type="submit" value="비밀번호 보기">
+            </p>
+        </fieldset>
+    </form>
+    <hr>
+    
+    <form action="" name="form2">
+        <fieldset>
+            <legend>폼요소2(약관동의/선택)</legend>
+            <div id="terms">
+                네이버 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+            </div>
+            <p>
+                <input type="checkbox" name="accept" id="accept">
+                <label for="accept">약관에 동의합니다.</label>
+            </p>
+            <hr>
+            <p>
+                <input type="checkbox" name="allCheck" id="allCheck">
+                <label for="allCheck">모두 동의</label>
+    
+                <input type="checkbox" name="subject1" id="subject1">
+                <label for="subject1">과목1</label>
+    
+                <input type="checkbox" name="subject2" id="subject2">
+                <label for="subject2">과목2</label>
+    
+                <input type="checkbox" name="subject3" id="subject3">
+                <label for="subject3">과목3</label>
+            </p>
+            <p>
+                <input type="submit" value="등록">
+                <input type="reset" value="취소">
+            </p>
+        </fieldset>
+    </form>
+    
+</body>
+</html>
